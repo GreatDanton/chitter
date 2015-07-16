@@ -1,0 +1,11 @@
+<h1> This is index </h1>
+
+<% @discussions.each do |discussion| %>
+<p><%= link_to discussion.content, discussion %></p>
+<p>Posted <%= time_ago_in_words(discussion.created_at) %> ago </p>
+
+
+<%end%>
+
+
+<%= link_to "New Discussion", new_discussion_path %>
