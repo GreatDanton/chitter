@@ -1,5 +1,7 @@
 class DiscussionsController < ApplicationController
-	layout "pages"
+	
+	layout "pages", except: [:frontpage]
+
 	before_action :find_discussion, only: [:show, :edit, :update, :destroy]
 
 

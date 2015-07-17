@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   resources :discussions
 
-  root 'pages#index'
-
-  resources :pages
+  root 'discussions#frontpage'
 
 end
