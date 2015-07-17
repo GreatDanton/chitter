@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+<link rel="stylesheet" href="foundation.min.css">
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="index.css">

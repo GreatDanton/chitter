@@ -1,11 +1,13 @@
 <h1> This is index </h1>
-
 <% @discussions.each do |discussion| %>
+
+<div class="discussion">
 <p><%= link_to discussion.content, discussion %></p>
 <p>Posted <%= time_ago_in_words(discussion.created_at) %> ago </p>
 
-
+</div>
 <%end%>
 
 
 <%= link_to "New Discussion", new_discussion_path %>
+<%= link_to "Main page", root_path %>

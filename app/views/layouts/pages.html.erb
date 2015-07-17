@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Troller</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin-ext' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  
+  <div class="navbar">
+       <ul>
+            <li><a href="#">What's hot</a>
+            </li>
+            <li><a href="#">Newest discussions</a>
+            </li>
+            <li><a href="#">Archive</a>
+            </li>
+            <li><a href="#">Leaderboards</a>
+            </li>
+            <li><a href="#">FAQ</a>
+            </li>
+            <li><a href="#">User settings</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container">
+<div class="button-new-discussion">
+  <%= link_to "New Discussion", new_discussion_path, class: "button" %>
+       
+</div>
+
+        <a href=""><div class="back-to-top">
+        <i class="fa fa-angle-up fa-2x"></i>
+        </div></a>
+
+
+  
+
+
+<%= yield %>
+    </div>
+
+</body>
+</html>
+
+

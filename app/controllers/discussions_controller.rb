@@ -1,5 +1,5 @@
 class DiscussionsController < ApplicationController
-	
+	layout "pages"
 	before_action :find_discussion, only: [:show, :edit, :update, :destroy]
 
 
@@ -19,7 +19,7 @@ class DiscussionsController < ApplicationController
 		@discussion = Discussion.new(discussion_params)
 
 		if @discussion.save
-			redirect_to root_path
+			redirect_to discussions_path
 		else
 			render 'new'
 		end
@@ -39,7 +39,7 @@ class DiscussionsController < ApplicationController
 
 	def destroy
 		@discussion.destroy
-		redirect_to root_path
+		redirect_to discussions_path
 	end
 
 	private
