@@ -35,6 +35,7 @@ group :development, :test do
 
 gem 'devise', '~> 3.5.1'
 gem 'simple_form', '~> 3.1.0'
+gem 'bcrypt', '~> 3.1.10'
 
 end
 

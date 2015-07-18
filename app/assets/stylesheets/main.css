@@ -21,8 +21,12 @@ body {
 }
 
 .logo {
+    display: inline-flex;
     float: left;
+    padding: 0px 10px;
+    min-width: 150px;
     margin-right: 50px;
+    flex-wrap: nowrap;
 }
 
 .navbar {
