@@ -1,4 +1,4 @@
-<%= simple_form_for @discussion do |f| %>
-<%= f.input :content %>
-<%= f.submit %>
+<%= form_for @discussion do |f| %>
+<%= f.text_area :content, :placeholder => "Content", class: "form-input" %>
+<%= f.submit "Create Discussion", class: "button" %>
 <%end%>
