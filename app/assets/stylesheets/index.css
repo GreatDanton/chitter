@@ -117,6 +117,7 @@ p {
     -webkit-transition: all 0.3 ease-in;
     transition: all 0.3 ease-in;
 }
+
 .btn-black:hover {
     background-color: #fff;
     color: #000; 
