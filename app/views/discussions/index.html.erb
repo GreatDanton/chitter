@@ -1,4 +1,9 @@
-<h1> This is index </h1>
+
+<div class="button-new-discussion">
+<%= link_to "New Discussion", new_discussion_path, class: "button" %>
+</div>
+
+<h1>This is index </h1>
 <% @discussions.each do |discussion| %>
 
 <div class="discussion">
@@ -9,5 +14,5 @@
 <%end%>
 
 
-<%= link_to "New Discussion", new_discussion_path %>
+
 <%= link_to "Main page", root_path %>

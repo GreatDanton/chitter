@@ -41,16 +41,15 @@
     </div>
 
     <div class="container">
-<div class="button-new-discussion">
-  <%= link_to "New Discussion", new_discussion_path, class: "button" %>
-       
-</div>
+    
+    <% flash.each do |message_type, message| %>
+      <div class="alert-<%= message_type %>"><%= message %></div>
+      <%end%>
+
 
         <a href=""><div class="back-to-top">
         <i class="fa fa-angle-up fa-2x"></i>
         </div></a>
-
-
   
 
 

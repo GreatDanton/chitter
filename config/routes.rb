@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   root 'discussions#frontpage'
   get 'signup' => "users#new"
 
+  resources :users
+
 end

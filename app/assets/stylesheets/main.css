@@ -191,15 +191,23 @@ a .categories{
     color: black;
 }
 
+.signup-centered {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+}
+
 .signup {
     display: flex;
-    max-width: 400px;
-    text-align: center;
-    margin: 10px auto;
+    width: 100%;
+    margin: 10px 0;
 }
 
 .form-input {
     width: 100%;
+    justify-content: center;
   min-height: 40px;
   font-size: 20px;
   border-radius: 2px;
@@ -223,6 +231,36 @@ a .categories{
     color: #8e8e8e;
 }
 
+    .debug_dump {
+        margin-top: 45px;
+        clear: both;
+        width: 100%;
+        border: 1px solid #ccc;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+#error_explanation {
+    color: red;
+    border: 1px solid red;
+    padding: 20px 10px;
+    border-radius: 5px;
+    background: white;
+}
+
+ #error_explanation ul{
+    color: red;
+    margin: 0 0 0 20px;
+}
+
+.alert-success {
+    padding: 10px 20px;
+    background-color: #43AC6A;
+    margin: 20px 0;
+    border-radius: 3px;
+    border: 1px solid #3A945B;
+    color: white;
+}
 
 @media screen and (max-width: 800px) {
     body p {
@@ -240,9 +278,7 @@ a .categories{
     .container {
         width: 100%;
     }
-    
-    
-    
+      
     
 }
 
