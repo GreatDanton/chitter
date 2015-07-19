@@ -1,5 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  #Prevent interception of nickname, email, password/ force ssl.
+  config.force_ssl = true
 
   # Code is not reloaded between requests.
   config.cache_classes = true
