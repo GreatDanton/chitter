@@ -1,0 +1,22 @@
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Run options: --seed 1169
+
+# Running:
+
+E
+
+Finished in 0.012428s, 80.4633 runs/s, 0.0000 assertions/s.
+
+  1) Error:
+UsersLoginTest#test_login_with_invalid_information:
+ActiveRecord::Fixture::FormatError: a YAML error occurred parsing /home/jan/Documents/RubyonRails/chitter/test/fixtures/users.yml. Please note that YAML must be consistently indented using spaces. Tabs are not allowed. Please have a look at http://www.yaml.org/faq.html
+The exact error was:
+  Psych::SyntaxError: (<unknown>): found character that cannot start any token while scanning for the next token at line 3 column 1
+    
+
+Error:
+UsersLoginTest#test_login_with_invalid_information:
+NoMethodError: undefined method `each' for nil:NilClass
+    
+
+1 runs, 0 assertions, 0 failures, 1 errors, 0 skips

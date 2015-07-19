@@ -21,6 +21,7 @@
       <h2><%= link_to "=] Troller", root_path %></h2>
 </div>
 
+
 <ul>
             <li><a href="#">What's hot</a>
             </li>
@@ -32,9 +33,28 @@
             </li>
             <li><a href="#">FAQ</a>
             </li>
-            <li><a href="#">User settings</a>
+
+            <% if logged_in? %>
+            <li><%= link_to "Users", '#' %>
             </li>
-        </ul>
+            
+           <li class="no-border">
+            <a href="#"> Account <span class="arrow">&#9660;</span></a>
+
+            <ul class="dropdown-menu">
+              <li><%= link_to "Profile", current_user %></li>
+              <li><%= link_to "Settings", '#' %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+            </ul>
+
+            </li>
+
+            <%else%>
+
+              <li><%= link_to "Log in", login_path %></li>
+            <%end%>
+</ul>
 
 
        
@@ -55,7 +75,7 @@
 
 <%= yield %>
     </div>
-
+      <%= debug(params) if Rails.env.development? %>
 </body>
 </html>
 
