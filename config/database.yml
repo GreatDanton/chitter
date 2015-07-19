@@ -25,7 +25,6 @@ production:
   adapter: postgresql
   encoding: utf8
   database: d3f61am4gteb3n
-  pool: 5
   username: aaljrspdafogwf    #-> *** data from heroku's postgres user details page
   password:  bVmppUyCCcXHvBlkDWlDTVeLn3
   host: ec2-54-235-145-226.compute-1.amazonaws.com
