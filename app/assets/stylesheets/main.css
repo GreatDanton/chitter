@@ -13,6 +13,10 @@ body {
     margin: 0;
 }
 
+label {
+    font-size: 16px;
+}
+
 .logo a {
     text-decoration: none;
     color: black;
@@ -210,7 +214,7 @@ a .categories{
   border-radius: 2px;
   padding: 0 10px;
   border: 1px solid #ccc;
-  margin: 10px 0;
+  margin: 0 0 10px 0;
   transition: all 0.3s ease-in;
 }
 
@@ -285,7 +289,7 @@ a .categories{
     font-size: 10px;
 }
 
-.dropdown-menu {
+.dropdown-menu {  /*Menu for user account details*/
     width: 160%;
     padding: 5px 0;
     position: absolute;
@@ -336,6 +340,12 @@ li.no-border:hover { /*Disable border bottom on accounts tab*/
     border-bottom: 0;
 }
 
+.gravatar-edit a  {
+    font-size: 16px;
+    margin: 0 20px;
+}
+
+/*MEDIA SCREENS*/
 @media screen and (min-width: 1200px) {
     .back-to-top {
     position: fixed;

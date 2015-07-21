@@ -1,0 +1,31 @@
+
+<h2 class="centered-text"> Update your profile </h2>
+
+<div class="signup-centered">
+
+<%= form_for(@user) do |f| %>
+
+<%= render 'shared/error_messages' %>
+
+<%= f.label :nickname %>
+<%= f.text_field :nickname, class: "form-input" %>
+
+<%= f.label :email %>
+<%= f.text_field :email, class: "form-input" %>
+
+<%= f.label :password %>
+<%= f.text_field :password, class: "form-input" %>
+
+<%= f.label :password_confirmation %>
+<%= f.text_field :password, class: "form-input" %>
+
+<%= f.submit "Save changes", class: "button" %>
+<%end%>
+
+<div class="gravatar-edit">
+<%= gravatar_for @user %>
+<a href="http://gravatar.com/emails" target="_blank">change</a>
+</div>
+
+
+</div>
