@@ -123,6 +123,11 @@ p {
     color: #000; 
 }
 
+.btn-black:focus {
+    background-color: #fff;
+    color: #000;
+}
+
 .center-button {
     display: flex;
     justify-content: center;

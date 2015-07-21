@@ -234,6 +234,8 @@ a .categories{
 
 .checkbox {
     padding: 0 10px;
+    min-height: 16px;
+    min-width: 16px;
 }
 
 .inline {
@@ -242,7 +244,7 @@ a .categories{
 
 .inline p {
     margin-left: 10px;
-    margin-top: -2px;
+    margin-top: -5px;
 }
 
 .debug_dump {
@@ -267,22 +269,40 @@ a .categories{
     margin: 0 0 0 20px;
 }
 
-.alert-success {
-    padding: 10px 20px;
-    background-color: #43AC6A;
-    margin: 20px 0;
-    border-radius: 3px;
-    border: 1px solid #3A945B;
-    color: white;
+.alert-success, .alert-danger  {
+    position: relative;
+    border: 1px solid;
+    margin: 10px 0px;
+    padding: 15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
 }
 
+.alert-success {
+  color: #4f8a10;
+  background-color: #dff2bf;
+ }
+
+ .alert-success:before {
+    position: absolute;
+    font-family: "FontAwesome";
+    content: "\f00c";
+    left: 20px;
+    font-size: 16px;
+
+ }
+
 .alert-danger {
-    padding: 10px 20px;
-    background-color: #ff1919;
-    margin: 20px 0;
-    border-radius: 3px;
-    border: 1px solid #ff3232;
-    color: white;
+   color: #d8000c;
+   background-color: #ffbaba;
+}
+
+.alert-danger:before {
+    position: absolute;
+    font-family: "FontAwesome";
+    content: "\f00d";
+    left: 20px;
+    font-size: 16px;
 }
 
 .arrow {
@@ -344,6 +364,48 @@ li.no-border:hover { /*Disable border bottom on accounts tab*/
     font-size: 16px;
     margin: 0 20px;
 }
+/* Users index */
+.users {
+    list-style: none;
+    margin: 0;
+}
+
+.users li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom:  1px solid #dedede;
+}
+
+/* PAGINATION */
+.pagination {
+  text-align: center;
+  padding: 0.3em;
+  cursor: default; }
+  .pagination a, .pagination span, .pagination em {
+    padding: 0.2em 0.5em; }
+  .pagination .disabled {
+    color: #aaaaaa; }
+  .pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    color: #ff0084; }
+  .pagination a {
+    border: 1px solid #dddddd;
+    color: #0063dc;
+    text-decoration: none; }
+    .pagination a:hover, .pagination a:focus {
+      border-color: #003366;
+      background: #0063dc;
+      color: white; }
+  .pagination .page_info {
+    color: #aaaaaa;
+    padding-top: 0.8em; }
+  .pagination .previous_page, .pagination .next_page {
+    border-width: 2px; }
+  .pagination .previous_page {
+    margin-right: 1em; }
+  .pagination .next_page {
+    margin-left: 1em; }
 
 /*MEDIA SCREENS*/
 @media screen and (min-width: 1200px) {

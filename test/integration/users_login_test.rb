@@ -7,7 +7,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 	end
 
  test "login with invalid information" do 
-     get login_path
+    get login_path
     post login_path, session: { nickname: @user.nickname, password: 'password' }
     assert_redirected_to @user
     follow_redirect!
