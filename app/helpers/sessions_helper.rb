@@ -40,7 +40,6 @@ module SessionsHelper
 		forget(current_user)
 		session.delete(:user_id)
 		@current_user = nil
-		cookies.delete(:remember_token)
 	end
 
 end
