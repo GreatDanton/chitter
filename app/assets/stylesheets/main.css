@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=Lato);
 * {
     padding: 0 0;
     margin: 0 0;
@@ -310,8 +312,9 @@ a .categories{
 }
 
 .dropdown-menu {  /*Menu for user account details*/
-    width: 160%;
+    width: 150%;
     padding: 5px 0;
+    border-radius: 10px;
     position: absolute;
     top: 100%;
     left: 0;
