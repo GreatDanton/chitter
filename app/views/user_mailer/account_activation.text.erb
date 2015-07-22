@@ -1,0 +1,7 @@
+Hi <%= @user.nickname %>,
+
+Welcome to :] Troller!  Click on the link below to activate your account:
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+This is auto generated message, please do not reply!

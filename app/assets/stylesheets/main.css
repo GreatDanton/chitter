@@ -271,7 +271,7 @@ a .categories{
     margin: 0 0 0 20px;
 }
 
-.alert-success, .alert-danger  {
+.alert-success, .alert-danger, .alert-info  {
     position: relative;
     border: 1px solid;
     margin: 10px 0px;
@@ -303,6 +303,19 @@ a .categories{
     position: absolute;
     font-family: "FontAwesome";
     content: "\f00d";
+    left: 20px;
+    font-size: 16px;
+}
+
+.alert-info {
+    color: #00529b;
+    background-color: #bde5f8;
+}
+
+.alert-info:before {
+    position: absolute;
+    font-family: "FontAwesome";
+    content: "\f05a";
     left: 20px;
     font-size: 16px;
 }

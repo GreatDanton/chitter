@@ -6,12 +6,12 @@
 <h3>Logged in as: 
 <%= current_user.nickname %></h3><%end%>
 </div>
-<h2>Index page: </h2>
+<h2>Index page: </h2> 
 <% @discussions.each do |discussion| %>
 
 <div class="discussion">
 <p><%= link_to discussion.content, discussion %></p>
-<p>Posted <%= time_ago_in_words(discussion.created_at) %> ago </p>
+<p><%= time_ago_in_words(discussion.created_at) %> ago </p>
 
 </div>
 <%end%>

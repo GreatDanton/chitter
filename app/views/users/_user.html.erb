@@ -1,7 +1,13 @@
+<% if user.activated? %>
 <li>
+
 <%= gravatar_for user %>
 <%= link_to user.nickname, user %>
 <% if current_user.admin? && !current_user?(user) %>
+	<% unless user.admin? %>
  | <%= link_to "delete", user, method: :delete, data: {confirm: "Are you sure?"} %>
  <%end%>
+ <%end%>
+ 
 </li>
+<% end %>
