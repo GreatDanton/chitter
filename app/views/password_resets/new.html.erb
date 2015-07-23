@@ -1,0 +1,11 @@
+<h2 class="centered-text"> Forgot password </h2>
+
+<div class="signup-centered">
+<%= form_for(:password_reset, url: password_resets_path)do |f| %>
+<%= f.label :email %>
+<%= f.email_field :email, placeholder: "Enter your email", class: "form-input" %>
+
+<%= f.submit "Submit", class: "button expand" %>
+<%end%>
+
+</div>

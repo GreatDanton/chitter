@@ -208,6 +208,10 @@ a .categories{
     margin: 10px 0;
 }
 
+form {                      /*If there is email field only this makes sure its extended 100%*/
+    width: 100%;
+}
+
 .form-input {
     width: 100%;
     justify-content: center;
@@ -242,6 +246,7 @@ a .categories{
 
 .inline {
     display: inline-flex;
+    margin-top: 10px;
 }
 
 .inline p {
@@ -259,16 +264,27 @@ a .categories{
     }
 
 #error_explanation {
-    color: red;
-    border: 1px solid red;
-    padding: 20px 10px;
-    border-radius: 5px;
-    background: white;
+    position: relative;
+    border: 1px solid;
+    margin: 10px 0px;
+    padding: 15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    background: #ffbaba;
+    color: #d8000c;
 }
 
  #error_explanation ul{
-    color: red;
+    color: #d8000c;
     margin: 0 0 0 20px;
+}
+
+#error_explanation:before {
+    position: absolute;
+    font-family: "FontAwesome";
+    content: "\f00d";
+    left: 20px;
+    font-size: 16px;
 }
 
 .alert-success, .alert-danger, .alert-info  {
@@ -479,8 +495,16 @@ li.no-border:hover { /*Disable border bottom on accounts tab*/
     .discussion {
         padding: 5px 5px 5px 5px;
     }
+
+    label {
+        padding-left: 4px;
+    }
     
     #user-avatar-holder {
         padding-right: 5px;
+    }
+
+    .signup-centered {
+        padding: 0 4px;
     }
 }
