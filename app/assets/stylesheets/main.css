@@ -577,11 +577,11 @@ li.no-border:hover { /*Disable border bottom on accounts tab*/
 }
 
 @media screen and (max-width: 800px) {
-    body p {
+    .discussion p {
         font-size: 12px;
     }
     
-    body a {
+    .discussion a {
         font-size: 12px;
     }
     
