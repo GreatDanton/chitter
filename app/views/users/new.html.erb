@@ -7,9 +7,18 @@
 
 <%= render 'shared/error_messages' %>
 
+<%= f.label :nickname %>
 <%= f.text_field :nickname, :placeholder => "Enter your desired nickname", class: "form-input" %>
+
+<%= f.label :email %>
 <%= f.email_field :email, :placeholder => "Enter your email", class: "form-input" %>
+
+<div class="label-same-row">
+<%= f.label :password%><h5>(6 characters minimum)</h5>
+</div>
 <%= f.password_field :password, :placeholder => "Enter your password", class: "form-input" %>
+
+<%= f.label :password_confirmation %>
 <%= f.password_field :password_confirmation, :placeholder => "Confirm your password", class: "form-input" %>
 <%= f.submit "Create an account", class: "button expand" %>
 <%end%>
