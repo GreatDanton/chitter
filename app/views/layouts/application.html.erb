@@ -1,11 +1,10 @@
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>Troller</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin-ext' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -13,10 +12,115 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
+  <div class="navbar">
+
+  <div class="mobile-menu"><i class="fa fa-bars"></i>
+</div>
+
+
+   <div class="logo">   
+      <h2><%= link_to "=] Troller", root_path %></h2>
+</div>
+
+
+<ul>
+            <li><%= link_to "What's hot", discussions_path %>
+            </li>
+            <li><a href="#">Newest discussions</a>
+            </li>
+            <li><a href="#">Archive</a>
+            </li>
+            <li><a href="#">Leaderboards</a>
+            </li>
+            <li><a href="#">FAQ</a>
+            </li>
+
+            <% if logged_in? %>
+            <li><%= link_to "Users", users_path %>
+            </li>
+            
+           <li class="no-border">
+            <a href="#"> Account <span class="arrow">&#9660;</span></a>
+
+            <ul class="dropdown-menu">
+              <li><%= link_to "Profile", current_user %></li>
+              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+              <hr>
+              <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+            </ul>
+
+            </li>
+
+            <%else%>
+
+              <li><%= link_to "Log in", login_path %></li>
+              <li><%= link_to "Sign up", signup_path %></li>
+            <%end%>
+</ul>
+
+
+       
+    </div>
+
+      <div class="off-canvas-menu">
+
+
+<ul>
+            <li><%= link_to "What's hot", discussions_path %>
+            </li>
+            <li><a href="#">Newest discussions</a>
+            </li>
+            <li><a href="#">Archive</a>
+            </li>
+            <li><a href="#">Leaderboards</a>
+            </li>
+            <li><a href="#">FAQ</a>
+            </li>
+
+            <% if logged_in? %>
+            <li><%= link_to "Users", users_path %>
+            </li>
+            <hr>
+            <p> Account:</p>
+
+            <ul>
+              <li><%= link_to "Profile", current_user %></li>
+              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+              <hr>
+              <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+            </ul>
+
+            </li>
+
+            <%else%>
+              <hr>
+              <li><%= link_to "Log in", login_path %></li>
+              <li><%= link_to "Sign up", signup_path %></li>
+            <%end%>
+</ul>
+
+</div>
+
+    <div class="container">
+    
+    <% flash.each do |message_type, message| %>
+      <div class="alert-<%= message_type %>"><%= message %></div>
+      <%end%>
+
+
+
+
+        <a href=""><div class="back-to-top">
+        <i class="fa fa-angle-up fa-2x"></i>
+        </div></a>
+  
 
 
 <%= yield %>
-<%= debug(params) if Rails.env.development? %>
-
+    </div>
+      <%= debug(params) if Rails.env.development? %>
 </body>
 </html>
+
+

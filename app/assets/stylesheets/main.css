@@ -20,6 +20,7 @@ body {
     width: 100%;
     padding: 0;
     margin: 0;
+    min-width: 310px;
 }
 
 .logo a {
@@ -130,6 +131,7 @@ body {
 
 #comment-text {
     margin-top: 3px;
+    line-height: 1.2;
  }
 
 .user-avatar-holder {
@@ -137,6 +139,7 @@ body {
     min-width: 50px;
     min-height: 50px;
     padding: 0 0;
+    padding-right: 3px;
     margin-top: 10px;
     
 }
@@ -150,19 +153,19 @@ body {
     border: 1px solid #ccc;
     }
 
-#replyVoting {
+.replyVoting {
     padding: 0 0;
     display: inline-flex;
     margin-top: 20px;
 }
 
-#replyVoting a {
+.replyVoting a {
     color: #000;
     opacity: 0.4;
     text-decoration: none; 
 }
 
-#replyVoting a:hover {
+.replyVoting a:hover {
     color: #000;
     opacity: 1;
 }
@@ -174,6 +177,30 @@ body {
 
 .button-user-vote {
     padding: 0px 10px;
+    margin-left: 5px;
+}
+
+.userActions {
+    
+    margin-left: 20px;
+}
+
+.userActions a {
+    padding: 0 10px;
+}
+
+a.staff {
+    color: #e60000;
+}
+
+p.staff {
+    color: #e60000;
+}
+
+.date-ago {
+    display: inline;
+    font-size: 10px;
+    padding-left: 10px;
 }
 
 /* 2 ids: #user-upvote, #user-downvote*/
@@ -197,6 +224,11 @@ a .categories{
     color: black;
 }
 
+.text-centered {
+    text-align: center;
+    margin: 20px 0;
+}
+
 .signup-centered {
     display: flex;
     flex-wrap: wrap;
@@ -216,8 +248,8 @@ form {                      /*If there is email field only this makes sure its e
 }
 
 .form-input {
-    width: 100%;
-    justify-content: center;
+  width: 100%;
+  justify-content: center;
   min-height: 40px;
   font-size: 20px;
   border-radius: 2px;
@@ -231,14 +263,38 @@ form {                      /*If there is email field only this makes sure its e
     box-shadow: 0 0 15px #9ad2ff;
 }
 
-
-
 ::-moz-placeholder {
-    color: #b7b7b7;
+    color: #8e8e8e;
 }
 
 ::-webkit-placeholder {
     color: #8e8e8e;
+}
+
+.new-discussion {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    max-width: 700px;
+    width: 100%;
+}
+
+
+.form-text {
+    width: 100%;
+    font-family: "Source Sans Pro", sans-serif;
+    height: 180px;
+    font-size: 16px;
+    border-radius: 2px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    resize: none;
+    transition: all 0.3s ease-in;
+    margin-bottom: 10px;
+}
+
+.form-text:focus {
+    box-shadow: 0 0 15px #9ad2ff;
 }
 
 label {
@@ -425,6 +481,8 @@ li.no-border:hover { /*Disable border bottom on accounts tab*/
     border-bottom:  1px solid #dedede;
 }
 
+
+
 /* PAGINATION */
 .pagination {
   text-align: center;
@@ -464,6 +522,9 @@ li.no-border:hover { /*Disable border bottom on accounts tab*/
     display: none;
 }
 
+.no-numbers {
+    list-style-type: none;
+}
 
 /*MEDIA SCREENS*/
 @media screen and (min-width: 1200px) {
@@ -479,6 +540,11 @@ li.no-border:hover { /*Disable border bottom on accounts tab*/
 }
 
 @media screen and (min-width: 920px) and (max-width: 1200px){
+    
+    body {
+        overflow-x: hidden;
+    }
+
     .back-to-top {
     position: fixed;
     background-color: #ffffff;

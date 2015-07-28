@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
 
 
+  resources :discussions
+  root 'discussions#frontpage'
+  
   get 'password_resets/new'
 
   get 'password_resets/edit'
 
   get 'sessions/new'
 
-  resources :discussions
-
-  root 'discussions#frontpage'
   get 'signup' => "users#new"
 
   resources :users
