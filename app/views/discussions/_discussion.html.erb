@@ -1,20 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<h2>Listing Discussions</h2>
-
-<% if logged_in? %>
-<div class:"row">
-<%= link_to 'New Discussion', new_discussion_path, class: "button" %>
-
-<h3> Logged in as: <%= current_user.nickname %></h3>
-</div>
-<% end %>
-
-<% @discussions.each do |discussion| %>
-  <div class="discussion">
-  
-
-<div class="user-post">
+<li id="discussion-<%= discussion.id %>">
+	<div class="user-post">
             <div class="row">
                 <div class="small-2 large-2 columns user-avatar-holder">
                  <div class: "user-avatar"   <%= link_to gravatar_for(discussion.user), discussion.user %>
@@ -97,11 +82,5 @@
 
 
 </div>
-  	
-
-
-  </div>
-<% end %> 
-<%-# end of discussion loop -%>
-
-
+<hr style="margin-top: 25px">
+</li>

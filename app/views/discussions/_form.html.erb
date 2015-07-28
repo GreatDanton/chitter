@@ -1,4 +1,22 @@
-<%= form_for @discussion do |f| %>
-<%= f.text_area :content, :placeholder => "Content", class: "form-input" %>
-<%= f.submit "Create Discussion", class: "button" %>
-<%end%>
+<%= form_for(@discussion) do |f| %>
+  <% if @discussion.errors.any? %>
+    <div id="error_explanation">
+      <p><%= pluralize(@discussion.errors.count, "error") %> prohibited this discussion from being saved:</p>
+
+      <ul>
+      <% @discussion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="new-discussion">
+   <%= f.label :content %>
+    <%= f.text_area :content, placeholder: "Enter your message", class: "form-text" %>
+
+
+    <%= f.submit "Create Discussion", class: "button" %>
+      </div>
+</div>
+<% end %>
