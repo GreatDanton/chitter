@@ -110,10 +110,29 @@ p {
     margin: 10px 0px;
 }
 
+a:visited {             /*a with id doesn't change the color when visited*/
+    color: blue;
+}
+
+a:visited.button {         /*this changes color of the button text back to white */
+    color: #fff;
+}
+
+a:visited.btn-black {  
+    color: #fff;
+}
+
+a:visited.btn-black:hover {  /*fix for changing a:visited for black buttons*/
+    color: #000;
+}
+
+a:visited.btn-black:focus {
+    color: #000;
+}
+
 .btn-black {
     background-color: #000;
     border: 1px solid black;
-    color: #fff;
     -webkit-transition: all 0.3 ease-in;
     transition: all 0.3 ease-in;
 }
