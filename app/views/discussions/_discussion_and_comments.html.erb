@@ -1,7 +1,9 @@
-<!-- For presenting discussions on user/show -->
+<!-- For displaying discussions and their comments on discussion/index page -->
+<% @discussions.each do |discussion| %>
+  <div class="discussion">
+  
 
-<li id="discussion-<%= discussion.id %>">
-	<div class="user-post">
+<div class="user-post">
             <div class="row">
                 <div class="small-2 large-2 columns user-avatar-holder">
                  <div class: "user-avatar"><%= link_to gravatar_for(discussion.user), discussion.user %>
@@ -22,7 +24,7 @@
                         <%= link_to discussion.user.nickname, discussion.user %>
                         <%end%>
 
-                       <div class="date-ago">
+                            <div class="date-ago">
                              <% if discussion.created_at == discussion.updated_at %>
 
                             <%= time_ago_in_words(discussion.created_at) %> ago
@@ -67,30 +69,45 @@
                 <% if logged_in? %>
                 <% if discussion.user == current_user %>
 			      <%= link_to 'Edit', edit_discussion_path(discussion) %>
-			      <%= link_to 'Destroy', discussion, method: :delete, data: { confirm: 'Are you sure?' } %>
+			      <%= link_to 'Destroy', discussion, method: :delete, data: { confirm: 'Are you sure you want to delete discussion?'} %>
 				<% else %>
 				<% if current_user.admin? %>
 				<%= link_to 'Edit', edit_discussion_path(discussion) %>
-				<%= link_to 'Destroy', discussion, method: :delete, data: { confirm: 'Are you sure?'} %>
+				<%= link_to 'Destroy', discussion, method: :delete, data: { confirm: 'Are you sure you want to delete discussion?'} %>
 				<% end %>
 				<% end %>
 				<% end %>
 				</div>
                 
                 </div>
-
-
-			  	
-
         </div>
-
-
-
                 </div>
-
             </div>
-
-
 </div>
-<hr style="margin-top: 25px">
-</li>
+  	<!-- displaying each comment -->
+       <%= render partial: '/shared/indexComments', locals: { discussion: discussion } %>
+
+    <div class="row discussion-comment">
+    <div class="small-2 columns user-avatar-holder">
+    
+    <div class: "user-avatar">
+    <% if logged_in? %>
+    <%= link_to gravatar_for(current_user), current_user %>
+    <% end %>
+    </div>
+    </div>
+    <div class="small-10 columns text">
+    <div>
+    <%= form_for(@comment) do |f| %>
+    <%= f.hidden_field :discussion_id, value: discussion.id %>
+    <%= f.text_area :body, placeholder: "Enter your comment", class: "form-comment" %>
+    <%= f.submit "Post", class: "button small" %>
+    <%end%>
+</div>
+
+    </div>
+    </div>
+
+
+  </div>
+<% end %> 

@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
 
-  resources :discussions
+  resources :comments
+  resources :discussions do
+    resources :comments
+  end
   root 'discussions#frontpage'
   
   get 'password_resets/new'

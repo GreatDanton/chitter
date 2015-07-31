@@ -1,22 +1,27 @@
 class DiscussionsController < ApplicationController
   layout 'pages', only: [:frontpage]
   before_action :set_discussion, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, except: [:index, :frontpage]
+  before_action :logged_in_user, except: [:index, :show, :frontpage]
+  before_action :correct_user, only: [:edit, :destroy]
 
   # GET /discussions
   # GET /discussions.json
+
   def index
     @discussions = Discussion.all.order(created_at: :desc)
+    @comment = Comment.new
   end
 
   # GET /discussions/1
   # GET /discussions/1.json
+  def show
+  end
 
   # GET /discussions/new
   def new
     @discussion = current_user.discussions.build
   end
-
+ 
   # GET /discussions/1/edit
   def edit
   end
@@ -64,4 +69,18 @@ class DiscussionsController < ApplicationController
     def discussion_params
       params.require(:discussion).permit(:content)
     end
+
+    def correct_user
+      if current_user.admin?
+        @discussion = Discussion.find(params[:id])
+      elsif
+        @discussion = current_user.discussions.find_by(id: params[:id])
+        redirect_to discussions_path if @discussion.nil?
+      else
+          redirect_to request.referer || discussions_path
+          flash[:danger] = "You don't have acess to this page"
+      end
+    end
+        
+
 end

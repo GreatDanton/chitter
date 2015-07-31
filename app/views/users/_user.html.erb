@@ -10,7 +10,7 @@
 <%end%>
 <% if current_user.admin? && !current_user?(user) %>
 	<% unless user.admin? %>
- | <%= link_to "delete", user, method: :delete, data: {confirm: "Are you sure?"} %>
+ | <%= link_to "delete", user, method: :delete, data: {confirm: "Are you sure to delete this user?"} %>
  <%end%>
  <%end%>
  
