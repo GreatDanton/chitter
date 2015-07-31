@@ -11,10 +11,12 @@
 	</div>
 </div>
 
-<% if @user.discussions.any? %>
+<% if @user.discussions.any? || @user.comments.any? %>
 <ol class="no-numbers">
+
 	<%= render @discussions %>
 	<%= render @comments %>
+
 </ol>
 <%= will_paginate @discussions %>
 <%end%>

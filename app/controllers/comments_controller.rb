@@ -10,12 +10,6 @@ class CommentsController < ApplicationController
     @comments = Comment.all.order(created_at: :desc)
   end
 
-  # GET /comments/new
-  def new
-    @comment = current_user.comments.build
-  end
-
-  # GET /comments/1/edit
   def edit
   end
 

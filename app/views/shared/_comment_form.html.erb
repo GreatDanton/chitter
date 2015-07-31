@@ -1,0 +1,20 @@
+    <div class="row discussion-comment">
+        <div class="small-2 columns user-avatar-holder">
+    
+            <div class: "user-avatar">
+                <% if logged_in? %>
+                <%= link_to gravatar_for(current_user), current_user %>
+                <% end %>
+            </div>
+        </div>
+    
+        <div class="small-10 columns text">
+            <div>
+                <%= form_for(@comment) do |f| %>
+                <%= f.hidden_field :discussion_id, value: discussion.id %>
+                <%= f.text_area :body, placeholder: "Enter your comment", class: "form-comment" %>
+                <%= f.submit "Post", class: "button small" %>
+                <%end%>
+            </div>
+        </div>
+    </div>

@@ -1,18 +1,20 @@
+<!-- for showing on users index page, displays picture and name of each user -->
 <% if user.activated? %>
 <li>
 
-<%= gravatar_for user %>
+	<%= gravatar_for user %>
 
-<% if user.admin? %>
-<%= link_to user.nickname, user, class: "staff" %>
-<% else %>
-<%= link_to user.nickname, user %>
-<%end%>
-<% if current_user.admin? && !current_user?(user) %>
-	<% unless user.admin? %>
- | <%= link_to "delete", user, method: :delete, data: {confirm: "Are you sure to delete this user?"} %>
- <%end%>
- <%end%>
+	<% if user.admin? %>
+		<%= link_to user.nickname, user, class: "staff" %>
+	<% else %>
+		<%= link_to user.nickname, user %>
+	<%end%>
+
+	<% if current_user.admin? && !current_user?(user) %>
+		<% unless user.admin? %>
+ | 			<%= link_to "delete", user, method: :delete, data: {confirm: "Are you sure to delete this user?"} %>
+ 		<%end%>
+ 	<%end%>
  
 </li>
 <% end %>

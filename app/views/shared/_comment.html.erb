@@ -1,44 +1,41 @@
-
-<% discussion.comments.each do |comment| %>
-<div id="comment-<%= comment.id %>">
+<!-- displays comment and user -->
 <div class="user-post">
             <div class="row">
                 <div class="small-2 large-2 columns user-avatar-holder">
-                 <div class: "user-avatar"   <%= link_to gravatar_for(comment.user), comment.user %>
-                 <!-- avatar goes here --></div>
+                 <div class: "user-avatar"><%= link_to gravatar_for(comment.user), comment.user %>
+                </div>
                 </div>
 
                     <div class="small-10 columns">
 
 
                         <div class="row user-details">
-                            <div class="small-6 columns text">
+                       <div class="small-6 columns text">
                       
-                                <% if comment.user.admin? %> 
-                                    <%= link_to comment.user.nickname, comment.user, class: "staff" %> 
-                                <%else%>
-                                    <%= link_to comment.user.nickname, comment.user %>
-                                <%end%>
+                       <% if comment.user.admin? %> 
+                        <%= link_to comment.user.nickname, comment.user, class: "staff" %> 
 
-                                <div class="date-ago">
+                        <%else%>
 
-                                    <% if comment.created_at == comment.updated_at %>
-                                        <%= time_ago_in_words(comment.created_at) %> ago
-                                    <% else %>
-                                       updated <%= time_ago_in_words(comment.updated_at) %> ago
-                                    <% end %>
-                                </div>
-                            </div>
+                        <%= link_to comment.user.nickname, comment.user %>
+                        <%end%>
+
+                        <div class="date-ago"><%= time_ago_in_words(comment.created_at) %> ago</div>
+                        </div>
                             <div id="user-details" class="small-6 columns">
-                                <% if comment.user.admin? %>
-                                    <p class="right staff">Admin</p> 
-                                <%else%>
-                                    <p class="right">Title</p>
-                                <% end %> 
+                            <% if comment.user.admin? %>
+
+
+                            <p class="right staff">Admin</p> 
+                            
+                            <%else%>
+
+                            <p class="right">Title</p>
+                            <% end %> 
                             </div> 
 
 
-                        </div>
+                            </div>
 
 
                         <div class="row comment-text">
@@ -85,5 +82,3 @@
 
 
 </div>
-</div>
-<%end%>
