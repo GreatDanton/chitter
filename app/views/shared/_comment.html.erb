@@ -65,7 +65,7 @@
 
 <!-- EDIT MODAL // it display modal but I can update only the first comment of the current_user -->
 
-   <%= link_to "Edit", edit_comment_path(comment), remote: true, data: { 'reveal-id': "Edit-Modal-#{comment.id}" } %>
+   <%= link_to "Edit", edit_comment_path(comment), remote: true, data: { :'reveal-id' => "Edit-Modal-#{comment.id}" } %>
 
 
     <div id="Edit-Modal-<%= comment.id %>" class="reveal-modal" data-reveal aria-hidden="true" role="dialog">
