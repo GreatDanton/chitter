@@ -2,86 +2,13 @@
 <h3> Logged in as: <%= current_user.nickname %> </h3>
 <% end %>
 
-<div class="discussion">
+<div id="discussion-<%= @discussion.id%>" class="discussion">
+    <div id="discussion-container-<%= @discussion.id %>">
+    <%= render partial: "/shared/discussion", locals: { discussion: @discussion } %>
 
-<div class="row">
-	  <div class="small-2 large-2 columns user-avatar-holder">
-                 <div class: "user-avatar" <%= link_to gravatar_for(@discussion.user) %>
-      </div>
-</div>
-
-             <div class="small-10 columns">
-
-
-                        <div class="row user-details">
-                       <div class="small-6 columns text">
-                      
-                       <% if @discussion.user.admin? %> 
-                        <%= link_to @discussion.user.nickname, @discussion.user, class: "staff" %> 
-
-                        <%else%>
-
-                        <%= link_to @discussion.user.nickname, @discussion.user %>
-                        <%end%>
-
-                        <div class="date-ago"><%= time_ago_in_words(@discussion.created_at) %> ago</div>
-                        </div>
-                            <div id="user-details" class="small-6 columns">
-                            <% if @discussion.user.admin? %>
-
-
-                            <p class="right staff">Admin</p> 
-                            
-                            <%else%>
-
-                            <p class="right">Title</p>
-                            <% end %> 
-                            </div> 
-
-
-                            </div>
-
-
-                        <div id="comment-text" class="row">
-                          <div style="white-space: pre-line;"><%= @discussion.content %></div>
-                </div>
-
-            <div class="row">
-            <div class="small-10 large-10 columns replyVoting">
-
-                <a class="disabled" href="#">Reply</a>
-
-                <div class="userVoting"><p>#points</p>
-                    <a href="#"><div class="button-user-vote"><i class="fa fa-angle-up fa-lg"></i></div></a>
-
-                    <a href="#"><div class="button-user-vote"><i class="fa fa-angle-down fa-lg"></i></div></a>
-
-                </div>
-                <div class="userActions">
-                <% if logged_in? %>
-                <% if @discussion.user == current_user %>
-			      <%= link_to 'Edit', edit_discussion_path(@discussion) %>
-			      <%= link_to 'Destroy', @discussion, method: :delete, data: { confirm: 'Are you sure?' } %>
-				<% else %>
-				<% if current_user.admin? %>
-				<%= link_to 'Edit', edit_discussion_path(@discussion) %>
-				<%= link_to 'Destroy', @discussion, method: :delete, data: { confirm: 'Are you sure?'} %>
-				<% end %>
-				<% end %>
-				<% end %>
-				</div>
-                
-                </div>
-
-
-			  	
-
-        </div>
-
-
-
-        		</div>
-        </div>
-
-
+    <% @discussion.comments.each do |comment| %>
+        <%= render partial: '/shared/comment', locals: { comment: comment } %>
+    <%end%>
+    </div>
+    <%= render partial: "/shared/comment_form", locals: { discussion: @discussion } %>
 </div>

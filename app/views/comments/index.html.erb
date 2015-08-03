@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
+<div class="discussion">
+<h2 class="centered-text">Listing Comments:</h2>
 
-<h1>Listing Comments</h1>
-
-<table>
+<table class="zebra">
   <thead>
     <tr>
       <th>Discussion</th>
@@ -18,10 +18,32 @@
       <tr>
         <td><%= comment.discussion_id %></td>
         <td><%= comment.id %></td>
-        <td><%= comment.body %></td>
-        <td><%= comment.user.nickname %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td id="body-<%= comment.id %>"><%= comment.body %></td>
+        <td>
+        <% if comment.user.admin? %>
+        <p class="staff"><%= comment.user.nickname%></p>
+        <% else %>
+        <%= comment.user.nickname %>
+        <%end%>
+
+        </td>
+         <td>
+         <% if current_user.admin? %>
+      <%= link_to "Edit", edit_comment_path(comment), remote: true, data: { :'reveal-id' => "Edit-Modal-#{comment.id}" } %>
+
+
+      <div id="Edit-Modal-<%= comment.id %>" class="reveal-modal" data-reveal aria-hidden="true" role="dialog">
+        <h2 class="centered-text">Edit Comment:</h2>
+          <%= form_for(comment, remote: true) do |f| %>
+          <%= f.text_area :body, class: "form-comment2" %>
+          <%= f.submit "Edit Comment", class: "button" %>
+          <%end%>
+        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+      </div>
+      <% end %>
+      </td>
+        
+      <td><%= link_to 'Destroy', comment, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -29,4 +51,4 @@
 
 <br>
 
-<%= link_to 'New Comment', new_comment_path %>
+</div>

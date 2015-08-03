@@ -283,7 +283,7 @@ form {                      /*If there is email field only this makes sure its e
 .form-text {
     width: 100%;
     font-family: "Source Sans Pro", sans-serif;
-    height: 180px;
+    min-height: 180px;
     font-size: 14px;
     border-radius: 2px;
     padding: 5px 10px;

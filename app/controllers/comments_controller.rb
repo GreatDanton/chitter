@@ -47,9 +47,9 @@ class CommentsController < ApplicationController
   # DELETE /comments/1.json
   def destroy
     @comment.destroy
-    flash[:success] = "Comment was successfully destroyed."
-    redirect_to request.referer || comments_path
-
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

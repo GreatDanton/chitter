@@ -2,3 +2,7 @@ $('#Edit-Modal-<%= @comment.id %>').foundation('reveal', 'close');
 $('#comment-<%= @comment.id %>').fadeIn(500, function(){
 	$(this).replaceWith('<%= j render partial: "shared/comment", locals: { comment: @comment }%>');
 });
+
+$('#body-<%= @comment.id %>').slideDown(500, function(){
+	$(this).replaceWith('<%= j render partial: "comments/index_comment_body" %>');
+});

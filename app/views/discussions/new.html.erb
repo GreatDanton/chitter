@@ -1,7 +1,10 @@
+<% if logged_in? %>
+<h3> Logged in as: <%= current_user.nickname %> </h3>
+<% end %>
+
+<div class="discussion">
 <h2 class="text-centered">New Discussion</h2>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', discussions_path %>
-
-
+</div>

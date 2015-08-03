@@ -1,0 +1,7 @@
+$('#comment-<%= @comment.id %>').slideUp(700, function(){
+	$(this).remove();
+});
+
+$('#body-<%= @comment.id %>').closest('tr').fadeOut(700, function(){
+	$(this).remove();
+});

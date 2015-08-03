@@ -15,6 +15,8 @@ class DiscussionsController < ApplicationController
   # GET /discussions/1
   # GET /discussions/1.json
   def show
+    @discussion = Discussion.find_by(id: params[:id])
+    @comment = Comment.new
   end
 
   # GET /discussions/new
@@ -75,8 +77,8 @@ class DiscussionsController < ApplicationController
         @discussion = current_user.discussions.find_by(id: params[:id])
         redirect_to discussions_path if @discussion.nil?
       else
-          redirect_to request.referer || discussions_path
-          flash[:danger] = "You don't have acess to this page"
+        redirect_to request.referer || discussions_path
+        flash[:danger] = "You don't have acess to this page"
       end
     end
         
