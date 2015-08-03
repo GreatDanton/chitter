@@ -10,7 +10,7 @@
     
         <div class="small-10 columns text">
             <div>
-                <%= form_for(@comment) do |f| %>
+                <%= form_for(@comment, remote: true) do |f| %>
                 <%= f.hidden_field :discussion_id, value: discussion.id %>
                 <%= f.text_area :body, placeholder: "Enter your comment", class: "form-comment" %>
                 <%= f.submit "Post", class: "button small" %>

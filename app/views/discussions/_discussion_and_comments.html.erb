@@ -2,18 +2,17 @@
 <% @discussions.each do |discussion| %>
 
 <!-- display white paper/discussion -->
-<div class="discussion">
-
-    <!-- displaying discussion comment + user picture -->
+<div id="discussion-<%= discussion.id %>" class="discussion">
+    <div id="discussion-container-<%= discussion.id %>">
+    <!-- displaying discussion text + user picture -->
         <%= render partial: '/shared/discussion', locals: { discussion: discussion} %>
 
     <!-- displaying each comment -->
         <% discussion.comments.each do |comment| %>
-            <div id="comment-<%= comment.id %>">
-                <%= render partial: '/shared/comment', locals: { comment: comment} %>
-            </div>
+            
+        <%= render partial: '/shared/comment', locals: {comment: comment} %>
         <%end%>
-
+    </div>
     <!-- displaying form for commenting-->
         <%= render partial: '/shared/comment_form', locals: { discussion: discussion } %>
 

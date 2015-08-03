@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require fastclick
+//= require modernizr
 //= require turbolinks
 //= require off-canvas-sliding
+//= require foundation.min.js
 //= require_tree .

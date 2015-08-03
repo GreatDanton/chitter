@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   before_action :correct_user, only: [:edit, :destroy]
   before_action :admin, only: [:index]
 
+ layout "pages", only: [:edit, :form]
   # GET /comments
   # GET /comments.json
   def index
@@ -17,21 +18,28 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = current_user.comments.build(comment_params)
-
+    respond_to do |format| 
       if @comment.save
-        redirect_to discussions_path
+        format.html { redirect_to discussions_path }
+        format.js
       else
-        render 'edit'
+        format.html { render 'edit' }
+        format.js
       end
+    end
   end
 
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
-    if @comment.update(comment_params)
-      redirect_to discussions_path
-    else
-      render 'edit'
+    respond_to do |format|
+      if @comment.update(comment_params)
+        format.html
+        format.js
+      else
+        format.html
+        format.js
+      end
     end
   end
 

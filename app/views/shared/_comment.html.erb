@@ -1,4 +1,5 @@
 <!-- displays comment and user -->
+<div id="comment-<%= comment.id %>">
 <div class="user-post">
             <div class="row">
                 <div class="small-2 large-2 columns user-avatar-holder">
@@ -20,18 +21,23 @@
                         <%= link_to comment.user.nickname, comment.user %>
                         <%end%>
 
-                        <div class="date-ago"><%= time_ago_in_words(comment.created_at) %> ago</div>
+                        
+                       <div class="date-ago">
+                             <% if comment.created_at == comment.updated_at %>
+
+                            <%= time_ago_in_words(comment.created_at) %> ago
+                              <% else %>
+                           updated <%= time_ago_in_words(comment.updated_at) %> ago
+                           <% end %>
+
+                            </div>
                         </div>
                             <div id="user-details" class="small-6 columns">
-                            <% if comment.user.admin? %>
-
-
-                            <p class="right staff">Admin</p> 
-                            
-                            <%else%>
-
-                            <p class="right">Title</p>
-                            <% end %> 
+                              <% if comment.user.admin? %>
+                                <p class="right staff">Admin</p>                           
+                              <%else%>
+                                <p class="right">Title</p>
+                              <% end %> 
                             </div> 
 
 
@@ -55,30 +61,41 @@
                 </div>
                 <div class="userActions">
                 <% if logged_in? %>
-                <% if comment.user == current_user %>
-			      <%= link_to 'Edit', edit_comment_path(comment) %>
-			      <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
-				<% else %>
+                    <% if comment.user == current_user %>
+
+<!-- EDIT MODAL // it display modal but I can update only the first comment of the current_user -->
+
+   <%= link_to "Edit", edit_comment_path(comment), remote: true, data: { 'reveal-id': "Edit-Modal-#{comment.id}" } %>
+
+
+    <div id="Edit-Modal-<%= comment.id %>" class="reveal-modal" data-reveal aria-hidden="true" role="dialog">
+      <h2 class="centered-text">Edit Comment:</h2>
+
+          <%= form_for(comment, remote: true) do |f| %>
+
+          <%= f.text_area :body, class: "form-comment2" %>
+          <%= f.submit "Edit Comment", class: "button" %>
+          <%end%>
+
+      <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
+
+<!-- The following code works fine (via redirecting) -->
+
+    			      <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?'} %>
+				    <% else %>
 				<% if current_user.admin? %>
-				<%= link_to 'Edit', edit_comment_path(comment) %>
-				<%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?'} %>
+    				<%= link_to 'Edit', edit_comment_path(comment) %>
+    				<%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?'} %>
 				<% end %>
 				<% end %>
 				<% end %>
 				</div>
                 
                 </div>
-
-
-			  	
-
         </div>
-
-
-
                 </div>
-
             </div>
 
-
+</div>
 </div>

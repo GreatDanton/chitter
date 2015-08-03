@@ -30,8 +30,6 @@ class DiscussionsController < ApplicationController
   # POST /discussions.json
   def create
     @discussion = current_user.discussions.build(discussion_params)
-
-
       if @discussion.save
         redirect_to discussions_path
         flash[:success] = "Discussion was successfully created."

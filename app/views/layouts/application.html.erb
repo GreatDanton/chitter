@@ -120,6 +120,10 @@
 <%= yield %>
     </div>
       <%= debug(params) if Rails.env.development? %>
+<!-- Needed for modals to work. -->
+<script>
+$(document).foundation();
+</script>
 </body>
 </html>
 
