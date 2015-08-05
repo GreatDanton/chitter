@@ -4,6 +4,7 @@ has_many :comments, dependent: :destroy
 attr_accessor :remember_token, :activation_token, :reset_token
 before_save :downcase_email
 before_create :create_activation_digest
+acts_as_voter
 
 
 
@@ -13,6 +14,14 @@ before_create :create_activation_digest
 
 has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+
+  def increase_karma(count=1)
+    update_attribute(:karma, karma + count)
+  end
+
+  def decrease_karma(count=1)
+    update_attribute(:karma, karma - count)
+  end
 
 	def User.digest(string)
 		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

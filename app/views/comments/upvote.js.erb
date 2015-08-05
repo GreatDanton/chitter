@@ -1,0 +1,13 @@
+// replace commentScore number with ajax
+$('#commentScore-<%= @comment.id %>').find('p').fadeIn(500, function(){
+	$(this).replaceWith('<p><%= @comment.score %></p>');
+});
+
+// replace karma number in comment with ajax
+$('.userKarma-<%= @comment.user.id %>').find('p').fadeIn(500, function() {
+	$(this).replaceWith('<p><%=  @comment.user.karma %></p>');
+});
+
+$('#comment-<%= @comment.id %>').find('#upvote').fadeIn(500, function() {
+	$(this).replaceWith(' <%= j render partial: "unvote_up", locals: { comment: @comment } %>');
+});

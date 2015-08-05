@@ -1,7 +1,7 @@
 class DiscussionsController < ApplicationController
   layout 'pages', only: [:frontpage]
-  before_action :set_discussion, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, except: [:index, :show, :frontpage]
+  before_action :set_discussion, only: [:show, :edit, :update, :destroy, :upvoteDiscussion, :downvoteDiscussion, :unvoteDiscussion]
+  before_action :logged_in_user, except: [:index, :show, :frontpage, :upvoteDiscussion, :downvoteDiscussion, :unvoteDiscussion]
   before_action :correct_user, only: [:edit, :destroy]
 
   # GET /discussions
@@ -58,6 +58,24 @@ class DiscussionsController < ApplicationController
     flash[:success] = "Discussion was successfully deleted."
     redirect_to discussions_path
     end
+
+# upvote from user
+  def upvoteDiscussion
+    @discussion.upvote_from current_user
+    redirect_to :back
+  end
+
+  #downvote from user
+  def downvoteDiscussion
+    @discussion.downvote_from current_user
+    redirect_to :back
+  end
+
+  def unvoteDiscussion
+    @discussion.unvote_by current_user
+    redirect_to :back
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

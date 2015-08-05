@@ -1,9 +1,21 @@
 Rails.application.routes.draw do
 
 
-  resources :comments
+  resources :comments do
+    member do
+      put "upvote" => "comments#upvote"
+      put "downvote" => "comments#downvote"
+      put "unvote" => "comments#unvote"
+    end
+  end
+
   resources :discussions do
-    resources :comments
+    member do
+      put "upvote" => "discussions#upvoteDiscussion"
+      put "downvote" => "discussions#downvoteDiscussion"
+      put "unvote" => "discussions#unvoteDiscussion"
+    end
+
   end
   root 'discussions#frontpage'
   

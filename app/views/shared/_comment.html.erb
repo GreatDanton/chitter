@@ -36,7 +36,7 @@
                               <% if comment.user.admin? %>
                                 <p class="right staff">Admin</p>                           
                               <%else%>
-                                <p class="right">Title</p>
+                                <div class="userKarma-<%= comment.user.id %> right"><p><%= comment.user.karma %></p></div>
                               <% end %> 
                             </div> 
 
@@ -48,9 +48,45 @@
             <div class="row">
               <div class="small-10 large-10 columns replyVoting">
                 <a class="disabled" href="#">Reply</a>
-                <div class="userVoting"><p>#points</p>
-                    <a href="#"><div id="user-upvote" class="button-user-vote"><i class="fa fa-angle-up fa-lg"></i></div></a>
-                    <a href="#"><div id="user-downvote" class="button-user-vote"><i class="fa fa-angle-down fa-lg"></i></div></a>
+                <div class="userVoting">
+                  <div id="commentScore-<%= comment.id %>"><p><%= comment.score %></p></div>
+                <!-- VOTING AND UNVOTING SYSTEM-->
+                
+                <% unless logged_in? %>
+                 <%= link_to upvote_comment_path(comment), class:"button-user-vote", method: :put do %>
+                      <i class="fa fa-thumbs-o-up fa-lg"></i></span>
+                      <% end %>
+                  <%= link_to downvote_comment_path(comment), class:"button-user-vote", method: :put do %>
+                        <i class="fa fa-thumbs-o-down fa-lg"></i>
+                        <% end %>
+                <% end %>
+
+<!-- Logged in users only can vote -->
+                  <% if logged_in? %>
+                    <% unless current_user == comment.user %>
+
+                    <% if current_user.voted_up_on? comment %>
+                      <%= link_to unvote_comment_path(comment), class: "button-user-vote-voted", method: :put do %>
+                      <i class="fa fa-thumbs-o-up fa-lg"></i>
+                      <% end %>
+                    <% else %>
+                      <%= link_to upvote_comment_path(comment), class:"button-user-vote", id: "upvote",remote: true,method: :put do %>
+                        <i class="fa fa-thumbs-o-up fa-lg"></i>
+                      <% end %>
+                    <% end %>
+
+                    <% if current_user.voted_down_on? comment %>
+                     <%= link_to unvote_comment_path(comment), class: "button-user-vote-voted", method: :put do %>
+                      <i class="fa fa-thumbs-o-down fa-lg"></i>
+                      <% end %>
+                    <% else %>
+                        <%= link_to downvote_comment_path(comment), class:"button-user-vote", id: "downvote",remote: true, method: :put do %>
+                          <i class="fa fa-thumbs-o-down fa-lg"></i>
+                          <% end %>
+                    <% end %>
+
+                    <% end %>
+                  <% end %>
                 </div>
 
               <!-- Edit delete user actions -->

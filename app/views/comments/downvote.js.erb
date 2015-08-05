@@ -1,0 +1,11 @@
+$('#commentScore-<%= @comment.id %>').find('p').fadeIn(500, function(){
+	$(this).replaceWith('<p><%= @comment.score %></p>');
+});
+
+$('.userKarma-<%= @comment.user.id %>').find('p').fadeIn(500, function() {
+	$(this).replaceWith('<p><%=  @comment.user.karma %></p>');
+});
+
+$('#comment-<%= @comment.id %>').find('#downvote').fadeIn(500, function() {
+	$(this).replaceWith(' <%= j render partial: "unvote_down", locals: { comment: @comment } %>');
+});

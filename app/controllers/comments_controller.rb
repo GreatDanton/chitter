@@ -1,12 +1,12 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:edit, :update, :destroy]
-  before_action :logged_in_user, only: [:edit, :create, :update, :destroy]
+  before_action :set_comment, only: [:edit, :update, :destroy, :upvote, :downvote, :unvote]
+  before_action :logged_in_user, only: [:edit, :create, :update, :destroy, :upvote, :downvote, :unvote]
   before_action :correct_user, only: [:edit, :destroy]
   before_action :admin, only: [:index]
 
  layout "pages", only: [:edit, :form]
+ 
   # GET /comments
-  # GET /comments.json
   def index
     @comments = Comment.all.order(created_at: :desc)
   end
@@ -15,7 +15,6 @@ class CommentsController < ApplicationController
   end
 
   # POST /comments
-  # POST /comments.json
   def create
     @comment = current_user.comments.build(comment_params)
     respond_to do |format| 
@@ -30,7 +29,6 @@ class CommentsController < ApplicationController
   end
 
   # PATCH/PUT /comments/1
-  # PATCH/PUT /comments/1.json
   def update
     respond_to do |format|
       if @comment.update(comment_params)
@@ -44,11 +42,61 @@ class CommentsController < ApplicationController
   end
 
   # DELETE /comments/1
-  # DELETE /comments/1.json
   def destroy
     @comment.destroy
     respond_to do |format|
       format.js
+    end
+  end
+
+# UPVOTING/UNVOTING/DOWNVOTING.
+# upvote from user
+  def upvote
+    respond_to do |format|
+    if current_user.voted_down_on? @comment
+    @comment.upvote_from current_user
+    @comment.user.increase_karma
+    @comment.user.increase_karma
+    format.html { redirect_to :back}
+    format.js
+    else
+      @comment.upvote_from current_user
+      @comment.user.increase_karma
+      format.html {redirect_to :back}
+      format.js
+    end
+  end
+  end
+
+  # downvote from user
+  def downvote
+    respond_to do |format|
+    if current_user.voted_up_on? @comment
+    @comment.downvote_from current_user
+    @comment.user.decrease_karma
+    @comment.user.decrease_karma
+    format.html { redirect_to :back }
+    format.js
+    else
+      @comment.downvote_from current_user
+      @comment.user.decrease_karma
+      format.html { redirect_to :back }
+      format.js
+    end
+  end
+  end
+# unvote from user
+  def unvote
+
+    if current_user.voted_up_on? @comment 
+    @comment.unvote_by current_user
+    @comment.user.decrease_karma
+    redirect_to :back
+
+    else
+    @comment.unvote_by current_user
+    @comment.user.increase_karma
+    redirect_to :back
     end
   end
 
