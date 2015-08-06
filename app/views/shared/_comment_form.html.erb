@@ -1,3 +1,15 @@
+    <%= form_for(@comment, remote: true) do |f| %>
+     <% if @comment.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+            <ul>
+            <% @comment.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+            <% end %>
+            </ul>
+        </div>
+        <% end %>
+
     <div class="row discussion-comment">
         <div class="small-2 columns user-avatar-holder">
     
@@ -10,7 +22,7 @@
     
         <div class="small-10 columns text">
             <div>
-                <%= form_for(@comment, remote: true) do |f| %>
+
                 <%= f.hidden_field :discussion_id, value: discussion.id %>
                 <%= f.text_area :body, placeholder: "Enter your comment", class: "form-comment" %>
                 <%= f.submit "Post", class: "button small" %>

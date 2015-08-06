@@ -1,13 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Listing Discussions</h2>
-
 <% if logged_in? %>
-<div class:"row">
-<%= link_to 'New Discussion', new_discussion_path, class: "button" %>
-
-<h3> Logged in as: <%= current_user.nickname %></h3>
-</div>
+	<div class="row">
+		<div class="small-12 columns top-paper">
+			<%= link_to 'New Discussion', new_discussion_path, class: "button" %>
+			<h3 class="logged-in-as">Logged in as: <%= current_user.nickname %></h3>
+		</div>
+	</div>
 <% end %>
 
 <%= render partial: 'discussion_and_comments' %>

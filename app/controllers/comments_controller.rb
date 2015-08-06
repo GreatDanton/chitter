@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to discussions_path }
         format.js
       else
-        format.html { render 'edit' }
+        format.html 
         format.js
       end
     end

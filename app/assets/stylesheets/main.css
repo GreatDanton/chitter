@@ -95,6 +95,22 @@ body {
     width: auto;
 }
 
+.top-paper {
+    display: inline-flex;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    padding: 0px 10px;
+    background-color: #fff;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+    margin: 30px 0 15px 0;
+}
+
+.logged-in-as {
+    padding: 20px 0px;
+    margin: 0 30px;
+}
+
 .discussion {
     height: auto;
     min-height: 100px;
@@ -142,7 +158,7 @@ body {
 
 .user-details a {
     text-decoration: none;
-    color: mediumblue;
+    color: #0000cd;
 }
 
 .comment-text {
@@ -157,7 +173,6 @@ body {
     padding: 0 0;
     padding-right: 3px;
     margin-top: 10px;
-
 }
 
 .user-avatar {
@@ -167,7 +182,7 @@ body {
     padding: 0 0;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
     border: 1px solid #ccc;
-    }
+}
 
 .replyVoting {
     padding: 0 0;
@@ -439,11 +454,11 @@ label {
 }
 
 .debug_dump {
-        margin-top: 45px;
-        clear: both;
-        width: 100%;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
+    margin-top: 45px;
+    clear: both;
+    width: 100%;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
     }
 
 #error_explanation {
@@ -512,6 +527,27 @@ label {
 }
 
 .alert-info:before {
+    position: absolute;
+    font-family: "FontAwesome";
+    content: "\f05a";
+    left: 20px;
+    font-size: 16px;
+}
+
+.alert-danger-ajax {
+    position: fixed;
+    border: 1px solid;
+    top: 60px;
+    max-width: 800px;
+    margin: 10px 0px;
+    padding: 15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    color: #d8000c;
+    background-color: #ffbaba;
+}
+
+.alert-danger-ajax:before{
     position: absolute;
     font-family: "FontAwesome";
     content: "\f05a";
@@ -719,7 +755,7 @@ li.no-border:hover { /*Disable border bottom on accounts tab*/
         max-height: 40px;
      }
 
-       .mobile-menu:hover {
+    .mobile-menu:hover {
         cursor: pointer;
         border: 1px solid #000;
     }
@@ -826,5 +862,11 @@ li.no-border:hover { /*Disable border bottom on accounts tab*/
 
     .signup-centered {
         padding: 0 4px;
+    }
+}
+
+@media screen and (max-width: 325px) {
+    .logged-in-as {
+        display: none;
     }
 }
