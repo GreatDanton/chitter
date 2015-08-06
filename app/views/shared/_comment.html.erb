@@ -99,14 +99,14 @@
       <%= link_to "Edit", edit_comment_path(comment), remote: true, data: { :'reveal-id' => "Edit-Modal-#{comment.id}" } %>
 
 
-        <div id="Edit-Modal-<%= comment.id %>" class="reveal-modal" data-reveal aria-hidden="true" role="dialog">
+      <div id="Edit-Modal-<%= comment.id %>" class="reveal-modal" data-reveal aria-hidden="true" role="dialog">
           <h2 class="centered-text">Edit Comment:</h2>
             <%= form_for(comment, remote: true) do |f| %>
             <%= f.text_area :body, class: "form-comment2" %>
             <%= f.submit "Edit Comment", class: "button" %>
             <%end%>
           <a class="close-reveal-modal" aria-label="Close">&#215;</a>
-        </div>
+      </div>
 
     	<%= link_to 'Destroy', comment, remote: true, method: :delete, data: { confirm: 'Are you sure?'} %>
 			
