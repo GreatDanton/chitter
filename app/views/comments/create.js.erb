@@ -1,3 +1,9 @@
 $('#discussion-container-<%= @comment.discussion.id %>').append('<%= j render partial: "/shared/comment", locals: { comment: @comment } %>');
 $('#comment-<%= @comment.id %>').hide().slideDown(700);
 $(".form-comment").val('');
+$.ajax({
+success: function() {
+	$(".form-comment").css("height", "75px");
+},
+
+});
