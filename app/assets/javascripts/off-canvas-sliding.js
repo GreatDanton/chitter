@@ -10,9 +10,24 @@ $(document).on('ready page:load', function () {
 	}
 	});	
 });
+// auto resize text area
+function h(e) {
+	$(e).css({'height': 'auto', 'overflow-y': 'hidden'}).height(e.scrollHeight);
+}
+$('textarea').each(function () {
+	h(this);
+}).on('input', function () {
+	h(this);
+});
 
-// function for auto adding rows into comment form
-autosize.update($('textarea'));
+//smooth back to top scrolling
+	$(".back-to-top").click(function(event) {
+		event.preventDefault();
+		$("body,html").animate({
+			scrollTop: 0,
+		}, 700);
 
+	});
 
 });
+
