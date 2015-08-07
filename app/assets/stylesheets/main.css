@@ -403,7 +403,6 @@ form {                      /*If there is email field only this makes sure its e
     width: 100%;
     font-family: "Source Sans Pro", sans-serif;
     min-height: 75px;
-    height: 75px;
     font-size: 14px;
     border: 1px solid #ccc;
     resize: none;

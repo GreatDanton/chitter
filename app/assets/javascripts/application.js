@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require fastclick
 //= require modernizr
+//= require autosize.min.js
 //= require turbolinks
 //= require off-canvas-sliding
 //= require foundation.min.js

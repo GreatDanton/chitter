@@ -12,24 +12,7 @@ $(document).on('ready page:load', function () {
 });
 
 // function for auto adding rows into comment form
-function h(e) {
-	$(e).css({'height': 'auto', 'overflow-y': 'hidden'}).height(e.scrollHeight);
-}
-$('textarea').each(function () {
-	h(this);
-}).on('input', function () {
-	h(this);
-});
-
-//smooth back to top scrolling
-	$(".back-to-top").click(function(event) {
-		event.preventDefault();
-		$("body,html").animate({
-			scrollTop: 0,
-		}, 700);
-
-	});
-
+autosize.update($('textarea'));
 
 
 });
