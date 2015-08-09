@@ -13,6 +13,22 @@ hr {
      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+::selection {
+    background: #b5d6fd;
+    color: #000;
+}
+
+::-moz-selection {
+    background:#b5d6fd;
+    color:#000;
+}
+
+.font {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 14px;
+    color: #000;
+}
+
 body {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 14px;
@@ -680,8 +696,8 @@ li.no-border:hover { /*Disable border bottom on accounts tab*/
 .back-to-top {
     color: black;
     opacity: 0.5;
-    -webkit-transition: all 0.3s ease-in;
-            transition: all 0.3s ease-in;
+    -webkit-transition: all 0.1s linear;
+            transition: all 0.1s linear;
 }
 
 .back-to-top:hover {
