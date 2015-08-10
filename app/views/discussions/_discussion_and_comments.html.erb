@@ -5,12 +5,14 @@
 <div id="discussion-<%= discussion.id %>" class="discussion">
     <div id="discussion-container-<%= discussion.id %>">
     <!-- displaying discussion text + user picture -->
-        <%= render partial: '/shared/discussion', locals: { discussion: discussion} %>
-
+        
+    <!-- Discussion action buttons -->
+     <%= render partial: '/shared/discussion_actions', locals: { discussion: discussion } %>
+   
     <!-- displaying each comment -->
         <% discussion.comments.each do |comment| %>
             
-        <%= render partial: '/shared/comment', locals: {comment: comment} %>
+        <%= render partial: '/shared/comment', locals: { comment: comment } %>
         <%end%>
     </div>
     <!-- displaying form for commenting-->

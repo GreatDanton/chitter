@@ -1,0 +1,25 @@
+<div class="discussion">
+<h2 class="centered-text">Leaderboards</h2>
+	<table class="zebra">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nickname</th>
+      <th>Title</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% User.all.order(karma: :desc).each_with_index do |user, i| %>
+      <tr>
+        <td><%= (i+1) %></td>
+        <td><%= user.nickname %></td>
+        <td>Title</td>
+        <td><%= user.karma %></td>
+        <% end %>
+         </tr>
+         </tbody>
+         </table>
+
+</div>

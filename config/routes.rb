@@ -15,8 +15,10 @@ Rails.application.routes.draw do
       put "downvote" => "discussions#downvoteDiscussion"
       put "unvote" => "discussions#unvoteDiscussion"
     end
-
   end
+
+  get 'leaderboards' => 'users#leaderboards'
+
   root 'discussions#frontpage'
   
   get 'password_resets/new'

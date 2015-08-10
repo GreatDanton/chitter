@@ -12,9 +12,10 @@
   <% end %>
 
 <div class="new-discussion">
-   <%= f.label :content %>
-    <%= f.text_area :content, placeholder: "Enter your message", class: "form-text" %>
-
+<%= f.fields_for :comments do |ff| %>
+<%= ff.label :content %>
+<%= ff.text_area :body, placeholder: "Enter your message", class: "form-text" %>
+<% end %>
 
     <%= f.submit class: "button" %>
       </div>

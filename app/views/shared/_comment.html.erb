@@ -34,7 +34,7 @@
                         </div>
                             <div id="user-details" class="small-6 columns">
                               <% if comment.user.admin? %>
-                                <p class="right staff">Admin</p>                           
+                                <p class="right staff">Admin <%= comment.user.karma %></p>                           
                               <%else%>
                                 <div class="userKarma-<%= comment.user.id %> right"><p><%= comment.user.karma %></p></div>
                               <% end %> 

@@ -774,6 +774,7 @@ li.no-border:hover { /*Disable border bottom on accounts tab*/
         font-size: 30px;
         line-height: 30px;
         margin: 0 20px 0 20px;
+        transition: all 0.2s linear;
     }
 
     .mobile-menu:hover {

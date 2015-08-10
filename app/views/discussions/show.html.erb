@@ -4,7 +4,7 @@
 
 <div id="discussion-<%= @discussion.id%>" class="discussion">
     <div id="discussion-container-<%= @discussion.id %>">
-    <%= render partial: "/shared/discussion", locals: { discussion: @discussion } %>
+    <%= render partial: '/shared/discussion_actions', locals: { discussion: @discussion } %>
 
     <% @discussion.comments.each do |comment| %>
         <%= render partial: '/shared/comment', locals: { comment: comment } %>

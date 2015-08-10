@@ -22,16 +22,20 @@ class DiscussionsController < ApplicationController
   # GET /discussions/new
   def new
     @discussion = current_user.discussions.build
+    @comment = @discussion.comments.build
   end
  
   # GET /discussions/1/edit
-  def edit
-  end
 
   # POST /discussions
   # POST /discussions.json
   def create
     @discussion = current_user.discussions.build(discussion_params)
+    # assigns user_id to first comment when creating discussion
+    for comment in @discussion.comments
+      comment.user_id = current_user.id
+    end
+
       if @discussion.save
         redirect_to discussions_path
         flash[:success] = "Discussion was successfully created."
@@ -42,14 +46,7 @@ class DiscussionsController < ApplicationController
 
   # PATCH/PUT /discussions/1
   # PATCH/PUT /discussions/1.json
-  def update
-    if @discussion.update(discussion_params)
-      redirect_to discussions_path
-      flash[:success] = "Discussion was successfully updated."
-    else
-      render 'edit'
-    end
-  end
+
 
   # DELETE /discussions/1
   # DELETE /discussions/1.json
@@ -85,7 +82,7 @@ class DiscussionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def discussion_params
-      params.require(:discussion).permit(:content)
+      params.require(:discussion).permit(:id, :user_id, comments_attributes: [:body, :discussion_id, :user_id])
     end
 
     def correct_user

@@ -3,18 +3,17 @@
 
 
 <div class="row">
-<div class="small-2 columns">
+<div class="small-2 columns text">
 <%= gravatar_for @user %></div>
 	<div class="small-10 columns">
 	<h2><%= @user.nickname %></h2>
-	<h3><%= pluralize(@user.discussions.count + @user.comments.count, "comment") %></h3>
+	<h3><%= pluralize(@user.comments.count, "comment") %></h3>
 	</div>
 </div>
 
 <% if @user.discussions.any? || @user.comments.any? %>
 <ol class="no-numbers">
 
-	<%= render @discussions %>
 	<%= render @comments %>
 
 </ol>
