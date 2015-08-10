@@ -705,6 +705,15 @@ li.no-border:hover { /*Disable border bottom on accounts tab*/
     opacity: 1;
 }
 
+.guest-comment {
+    padding: 15px 0;
+    margin: 10px 0px;
+}
+
+.guest-comment a {
+    margin: 0 5px;
+}
+
 /*MEDIA SCREENS*/
 @media screen and (min-width: 1200px) {
     .back-to-top {

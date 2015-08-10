@@ -14,7 +14,17 @@
         <%end%>
     </div>
     <!-- displaying form for commenting-->
+      <% if logged_in? %>
         <%= render partial: '/shared/comment_form', locals: { discussion: discussion } %>
-
+    <% else %>
+    <div class="row">
+    <div class="small-12 columns text">
+    <div class="guest-comment">
+    <p class="centered-text"> <%= link_to "Login ", login_path %> or <%= link_to "Sign up ", signup_path %> now to post a comment.</p>
+    </div>
+    </div>
+    </div>
+    <% end %>
+    
 </div>
 <% end %>
