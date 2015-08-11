@@ -47,46 +47,33 @@
                     <h2>Battle your way to the top, and achieve the ultimate glory! <i class="fa fa-trophy fa-1x"></i></h2>
                 </div>
 
-                <table class="zebra">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Nickname</th>
-                            <th>Title</th>
-                            <th>Points</th>
-                        </tr>
+          <table class="zebra">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nickname</th>
+      <th>Title</th>
+      <th>Points</th>
+    </tr>
+  </thead>
 
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>I am an ass</td>
-                            <td>Admin</td>
-                            <td>102 479</td>
-                        </tr>
+  <tbody>
+    <% @users.each_with_index do |user, i|%>
+    <% @place = i+1 %>
+    <% if @place <= 5 %>
+      <tr>
+        <td><%= @place %></td>
+        <td><%= user.nickname %></td>
+        <td>Title</td>
+        <td><%= user.karma %></td>
+        <% end %>
+        <% end %>
+         </tr>
+         </tbody>
+         </table>
 
-                        <tr>
-                            <td>2</td>
-                            <td>Your avatar suits your nickname</td>
-                            <td>Godlike troll</td>
-                            <td> 90 201</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Internetsthing</td>
-                            <td>King of trolls</td>
-                            <td> 59 365</td>
-                        </tr>
 
-                        <tr>
-                            <td>4</td>
-                            <td>I love this site</td>
-                            <td>King of trolls</td>
-                            <td> 51 512</td>
-                        </tr>
-                    </tbody>
-                </table>
-
+                <h2 class="centered-text margin-top-150"> Active users: <%= User.count %></h2>
                
             </div>
 

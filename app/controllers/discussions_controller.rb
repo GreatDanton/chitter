@@ -7,6 +7,10 @@ class DiscussionsController < ApplicationController
   # GET /discussions
   # GET /discussions.json
 
+  def frontpage
+    @users = User.all.order(karma: :desc)
+  end
+
   def index
     @discussions = Discussion.all.order(created_at: :desc)
     @comment = Comment.new

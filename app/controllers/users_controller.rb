@@ -51,6 +51,10 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def leaderboards
+    @users = User.all.order(karma: :desc)
+  end
+
 private
 
 
