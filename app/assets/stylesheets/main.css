@@ -27,6 +27,7 @@ hr {
     font-family: "Source Sans Pro", sans-serif;
     font-size: 14px;
     color: #000;
+    word-wrap: break-word;
 }
 
 body {
@@ -264,6 +265,10 @@ body {
 
 .disabled {
     opacity: 0.4;
+}
+
+.staff {
+    color: #e60000;
 }
 
 a.staff {

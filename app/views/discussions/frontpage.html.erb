@@ -63,9 +63,27 @@
     <% if @place <= 5 %>
       <tr>
         <td><%= @place %></td>
-        <td><%= user.nickname %></td>
-        <td>Title</td>
-        <td><%= user.karma %></td>
+        <td>
+        <% if user.admin? %>
+        <span class="staff"><%= user.nickname %></span>
+        <% else %>
+        <%= user.nickname %>
+        <% end %>
+        </td>
+        <td>
+        <% if user.admin? %>
+        <span class="staff"><%= karma_title(user) %></span>
+        <% else %>
+        <%= karma_title(user) %>
+        <% end %>
+        </td>
+        <td>
+        <% if user.admin? %>
+        <span class="staff"><%= user.karma %></span>
+        <% else %>
+        <%= user.karma %>
+        <% end %>
+        </td>
         <% end %>
         <% end %>
          </tr>

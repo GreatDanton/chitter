@@ -14,9 +14,27 @@
     <% @users.each_with_index do |user, i| %>
       <tr>
         <td><%= (i+1) %></td>
-        <td><%= user.nickname %></td>
-        <td>Title</td>
-        <td><%= user.karma %></td>
+               <td>
+        <% if user.admin? %>
+        <span class="staff"><%= user.nickname %></span>
+        <% else %>
+        <%= user.nickname %>
+        <% end %>
+        </td>
+        <td>
+        <% if user.admin? %>
+        <span class="staff"><%= karma_title(user) %></span>
+        <% else %>
+        <%= karma_title(user) %>
+        <% end %>
+        </td>
+        <td>
+        <% if user.admin? %>
+        <span class="staff"><%= user.karma %></span>
+        <% else %>
+        <%= user.karma %>
+        <% end %>
+        </td>
         <% end %>
          </tr>
          </tbody>

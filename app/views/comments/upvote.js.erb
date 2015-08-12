@@ -5,7 +5,7 @@ $('#commentScore-<%= @comment.id %>').find('p').fadeIn(500, function(){
 
 // replace karma number in comment with ajax
 $('.userKarma-<%= @comment.user.id %>').find('p').fadeIn(500, function() {
-	$(this).replaceWith('<p><%=  @comment.user.karma %></p>');
+	$(this).replaceWith('<p><%= karma_title(@comment.user) %> <%= @comment.user.karma %>pts</p>');
 });
 
 $('#comment-<%= @comment.id %>').find('#upvote').fadeIn(500, function() {
