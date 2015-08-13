@@ -27,7 +27,14 @@ hr {
     font-family: "Source Sans Pro", sans-serif;
     font-size: 14px;
     color: #000;
+}
+
+pre {
+    word-break: break-all;
     word-wrap: break-word;
+    white-space: pre;
+    white-space: -moz-pre-wrap;
+    white-space: pre-wrap;
 }
 
 body {
@@ -181,6 +188,7 @@ body {
 .comment-text {
     padding-top: 3px;
     line-height: 1.2;
+    word-wrap: break-word;
  }
 
 .user-avatar-holder {

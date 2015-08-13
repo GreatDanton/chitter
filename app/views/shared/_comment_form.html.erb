@@ -25,7 +25,7 @@
 
                 <%= f.hidden_field :discussion_id, value: discussion.id %>
                 <%= f.text_area :body, placeholder: "Enter your comment", class: "form-comment" %>
-                <%= f.submit "Post", class: "button small" %>
+                <%= f.submit "Post", class: "button small", data: {disable_with: "Saving..."} %>
                 <%end%>
             </div>
         </div>

@@ -22,7 +22,8 @@
       <tr>
         <td><%= comment.discussion_id %></td>
         <td><%= comment.id %></td>
-        <td id="body-<%= comment.id %>"><%= comment.body %></td>
+        <td id="body-<%= comment.id %>"><div style="word-break: break-all;
+    word-wrap: break-word;"><%= comment.body %></div></td>
         <td>
         <% if comment.user.admin? %>
         <p class="staff"><%= comment.user.nickname%></p>
@@ -33,14 +34,14 @@
         </td>
          <td>
          <% if current_user.admin? %>
-      <%= link_to "Edit", edit_comment_path(comment), remote: true, data: { :'reveal-id' => "Edit-Modal-#{comment.id}" } %>
+      <%= link_to "Edit", edit_comment_path(comment), remote: true, data: { :'reveal-id' => "Edit-Modal-#{comment.id}", disable_with: "Opening..." } %>
 
 
       <div id="Edit-Modal-<%= comment.id %>" class="reveal-modal" data-reveal aria-hidden="true" role="dialog">
         <h2 class="centered-text">Edit Comment:</h2>
           <%= form_for(comment, remote: true) do |f| %>
           <%= f.text_area :body, class: "form-comment2" %>
-          <%= f.submit "Edit Comment", class: "button" %>
+          <%= f.submit "Edit Comment", class: "button", data: { disable_with: "Saving..." } %>
           <%end%>
         <a class="close-reveal-modal" aria-label="Close">&#215;</a>
       </div>

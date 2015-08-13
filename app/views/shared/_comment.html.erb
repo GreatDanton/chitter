@@ -48,7 +48,7 @@
 
                         <div class="row comment-text">
                         <div class="small-12 columns text">
-                          <pre class="font"><div style="white-space: pre-wrap;"><%= comment.body %></div></pre>
+                          <pre class="font"><%= comment.body %></pre>
                         </div>
                         </div>
             <div class="row">
@@ -72,21 +72,21 @@
                     <% unless current_user == comment.user %>
 
                     <% if current_user.voted_up_on? comment %>
-                      <%= link_to unvote_comment_path(comment), class: "button-user-vote-voted", method: :put do %>
+                      <%= link_to unvote_comment_path(comment), class: "button-user-vote-voted", method: :put, data: { disable_with: "Saving..." } do %>
                       <i class="fa fa-thumbs-o-up fa-lg"></i>
                       <% end %>
                     <% else %>
-                      <%= link_to upvote_comment_path(comment), class:"button-user-vote", id: "upvote",remote: true,method: :put do %>
+                      <%= link_to upvote_comment_path(comment), class:"button-user-vote", id: "upvote",remote: true,method: :put, data: { disable_with: "Saving..." } do %>
                         <i class="fa fa-thumbs-o-up fa-lg"></i>
                       <% end %>
                     <% end %>
 
                     <% if current_user.voted_down_on? comment %>
-                     <%= link_to unvote_comment_path(comment), class: "button-user-vote-voted", method: :put do %>
+                     <%= link_to unvote_comment_path(comment), class: "button-user-vote-voted", method: :put, data: { disable_with: "Saving..." } do %>
                       <i class="fa fa-thumbs-o-down fa-lg"></i>
                       <% end %>
                     <% else %>
-                        <%= link_to downvote_comment_path(comment), class:"button-user-vote", id: "downvote",remote: true, method: :put do %>
+                        <%= link_to downvote_comment_path(comment), class:"button-user-vote", id: "downvote",remote: true, method: :put, data: { disable_with: "Saving..." } do %>
                           <i class="fa fa-thumbs-o-down fa-lg"></i>
                           <% end %>
                     <% end %>
@@ -102,14 +102,14 @@
 
     <!-- EDIT MODAL // it display modal but I can update only the first comment of the current_user -->
 
-      <%= link_to "Edit", edit_comment_path(comment), remote: true, data: { :'reveal-id' => "Edit-Modal-#{comment.id}" } %>
+      <%= link_to "Edit", edit_comment_path(comment), remote: true, data: { :'reveal-id' => "Edit-Modal-#{comment.id}", disable_with: "Opening..." } %>
 
 
       <div id="Edit-Modal-<%= comment.id %>" class="reveal-modal" data-reveal aria-hidden="true" role="dialog">
           <h2 class="centered-text">Edit Comment:</h2>
             <%= form_for(comment, remote: true) do |f| %>
             <%= f.text_area :body, class: "form-comment2" %>
-            <%= f.submit "Edit Comment", class: "button" %>
+            <%= f.submit "Edit Comment", class: "button", data: {disable_with: "Saving..."} %>
             <%end%>
           <a class="close-reveal-modal" aria-label="Close">&#215;</a>
       </div>
@@ -119,14 +119,14 @@
       <% else %>
 				
   <% if current_user.admin? %>
-    	<%= link_to "Edit", edit_comment_path(comment), remote: true, data: { :'reveal-id' => "Edit-Modal-#{comment.id}" } %>
+    	<%= link_to "Edit", edit_comment_path(comment), remote: true, data: { :'reveal-id' => "Edit-Modal-#{comment.id}", disable_with: "Opening..." } %>
 
 
       <div id="Edit-Modal-<%= comment.id %>" class="reveal-modal" data-reveal aria-hidden="true" role="dialog">
         <h2 class="centered-text">Edit Comment:</h2>
           <%= form_for(comment, remote: true) do |f| %>
           <%= f.text_area :body, class: "form-comment2" %>
-          <%= f.submit "Edit Comment", class: "button" %>
+          <%= f.submit "Edit Comment", class: "button", data: { disable_with: "Saving..."} %>
           <%end%>
         <a class="close-reveal-modal" aria-label="Close">&#215;</a>
       </div>
