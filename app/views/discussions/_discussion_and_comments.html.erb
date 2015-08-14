@@ -10,7 +10,7 @@
      <%= render partial: '/shared/discussion_actions', locals: { discussion: discussion } %>
    
     <!-- displaying each comment -->
-        <% discussion.comments.all.order(created_at: :desc).each do |comment| %>
+        <% discussion.comments.all.order(created_at: :asc).each do |comment| %>
             
         <%= render partial: '/shared/comment', locals: { comment: comment } %>
         <%end%>
