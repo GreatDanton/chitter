@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :categories
   resources :comments do
     member do
       put "upvote" => "comments#upvote"
@@ -17,6 +18,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'faq' => 'categories#FAQ'
+  
   get 'leaderboards' => 'users#leaderboards'
 
   root 'discussions#frontpage'

@@ -1,0 +1,35 @@
+<% if logged_in? %>
+  <div class="row">
+    <div class="small-12 columns top-paper">
+    <% if current_user.admin? %>
+      <%= link_to 'New Category', new_category_path, class: "button" %>
+      <h3 class="logged-in-as">Logged in as: <%= current_user.nickname %></h3>
+      <% else %>
+      <h3 class="logged-in-as">Logged in as: <%= current_user.nickname %></h3>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div class="discussion">
+<h2 class="centered-text">Listing Categories:</h2>
+
+<div class="row margin-top-50">
+<% @categories.each do |category| %>
+  <div class="small-6 medium-4 columns categories">
+  <%= link_to category.name, category %>
+  </div>
+<% end %>
+</div>
+<br>
+
+<h2 class="centered-text" style="margin-top: 120px">Modifying Troller:</h2>
+<div class="row margin-top-50">
+<% @tech.each do |category| %>
+  <div class="small-6 medium-4 columns categories">
+  <%= link_to category.name, category %>
+  </div>
+<% end %>
+</div>
+
+</div>

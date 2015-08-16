@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :discussion
+  belongs_to :category
   validates :body, presence: true
   acts_as_votable
 

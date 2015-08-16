@@ -1,6 +1,7 @@
 class Discussion < ActiveRecord::Base
 	belongs_to :user
 	has_many :comments, dependent: :destroy
+	belongs_to :category
 	validates :user_id, presence: true
 	#validates :content, presence: true
 	accepts_nested_attributes_for :comments

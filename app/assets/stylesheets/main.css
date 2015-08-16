@@ -304,20 +304,28 @@ p.staff {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    padding: 20px 0;
     margin: 10px 0;
+    float: left;
 }
 
 .categories:hover {
-    background-color: #9ad2ff;
 }
 
-a .categories{
+.categories a {
     color: black;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    border: 1px solid #dedede;
+}
+
+.categories a:hover {
+    background-color: #b5d6fd;
+}
+
+.categories.columns + .categories.columns:last-child {
+    float: left;
 }
 
 .text-centered {
@@ -590,7 +598,7 @@ label {
 
 .dropdown-menu {  /*Menu for user account details*/
     width: 150%;
-    padding: 5px 0;
+    padding: 10px 0;
     border-radius: 10px;
     position: absolute;
     top: 100%;

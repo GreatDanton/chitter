@@ -27,13 +27,13 @@
 <ul>
             <li><%= link_to "What's hot", discussions_path %>
             </li>
-            <li><a href="#">Newest discussions</a>
+            <li><%= link_to "Newest discussions", categories_path %>
             </li>
             <li><a href="#">Archive</a>
             </li>
             <li><%= link_to "Leaderboards", leaderboards_path %>
             </li>
-            <li><a href="#">FAQ</a>
+            <li><%= link_to "FAQ", faq_path %>
             </li>
 
             <% if logged_in? %>
@@ -69,7 +69,7 @@
 <ul>
             <li><%= link_to "What's hot", discussions_path %>
             </li>
-            <li><a href="#">Newest discussions</a>
+            <li><%= link_to "Newest discussions", categories_path %>
             </li>
             <li><a href="#">Archive</a>
             </li>
