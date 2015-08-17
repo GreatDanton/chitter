@@ -9,14 +9,14 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
 
+  <% end %>
 <div class="new-discussion">
 <%= f.fields_for :comments do |ff| %>
 <%= ff.label :content %>
 <%= ff.text_area :body, placeholder: "Enter your message", class: "form-text" %>
 <% end %>
-
+    <%= f.hidden_field :category_id, value: params[:category_id] %>
     <%= f.submit class: "button", data: {disable_with: "Saving..."} %>
       </div>
 </div>

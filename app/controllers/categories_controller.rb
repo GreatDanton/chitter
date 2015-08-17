@@ -11,6 +11,8 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @discussions = Discussion.where(category_id: @category.id).order(created_at: :desc)
+    @comment = Comment.new
   end
 
   # GET /categories/new

@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
 
-  resources :categories
+  resources :categories do
+    resources :discussions
+  end
+
   resources :comments do
     member do
       put "upvote" => "comments#upvote"

@@ -15,11 +15,11 @@ acts_as_voter
 has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
-  def increase_karma(count=1)
+  def increase_karma(count)
     update_attribute(:karma, karma + count)
   end
 
-  def decrease_karma(count=1)
+  def decrease_karma(count)
     update_attribute(:karma, karma - count)
   end
 

@@ -12,7 +12,7 @@ class DiscussionsController < ApplicationController
   end
 
   def index
-    @discussions = Discussion.all.order(created_at: :desc)
+    @discussions = Discussion.where("score >= 1").all.order(created_at: :desc)
     @comment = Comment.new
   end
 
@@ -28,7 +28,10 @@ class DiscussionsController < ApplicationController
     @discussion = current_user.discussions.build
     @comment = @discussion.comments.build
   end
- 
+
+  def edit
+  end
+
   # GET /discussions/1/edit
 
   # POST /discussions
@@ -48,6 +51,15 @@ class DiscussionsController < ApplicationController
     end
   end
 
+  def update
+      if @discussion.update(discussion_params)
+        redirect_to categories_path
+        flash[:success] = "Discussion was successfully updated."
+      else
+        render 'edit'
+      end
+  end
+
   # PATCH/PUT /discussions/1
   # PATCH/PUT /discussions/1.json
 
@@ -62,19 +74,44 @@ class DiscussionsController < ApplicationController
 
 # upvote from user
   def upvoteDiscussion
-    @discussion.upvote_from current_user
-    redirect_to :back
+    respond_to do |format|
+      if current_user.voted_down_on? @discussion
+        @discussion.upvote_from current_user
+        @discussion.increase_score(2)
+        format.html { redirect_to :back}
+      else
+        @discussion.upvote_from current_user
+        @discussion.increase_score(1)
+        format.html { redirect_to :back }
+      end
+    end
   end
 
   #downvote from user
   def downvoteDiscussion
+    respond_to do |format|
+    if current_user.voted_up_on? @discussion
     @discussion.downvote_from current_user
-    redirect_to :back
+    @discussion.decrease_score(2)
+    format.html { redirect_to :back }
+    else
+      @discussion.downvote_from current_user
+      @discussion.decrease_score(1)
+      format.html { redirect_to :back }
+    end
+  end
   end
 
   def unvoteDiscussion
+    if current_user.voted_up_on? @discussion
     @discussion.unvote_by current_user
+    @discussion.decrease_score(1)
     redirect_to :back
+    else
+    @discussion.unvote_by current_user
+    @discussion.increase_score(1)
+    redirect_to :back
+    end
   end
 
 
@@ -86,7 +123,7 @@ class DiscussionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def discussion_params
-      params.require(:discussion).permit(:id, :user_id, comments_attributes: [:body, :discussion_id, :user_id])
+      params.require(:discussion).permit(:id, :user_id, :category_id, comments_attributes: [:body, :discussion_id, :user_id])
     end
 
     def correct_user
@@ -100,6 +137,6 @@ class DiscussionsController < ApplicationController
         flash[:danger] = "You don't have acess to this page"
       end
     end
-        
+
 
 end

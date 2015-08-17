@@ -11,9 +11,10 @@
 <% if logged_in? %>
   <div class="row">
     <div class="small-12 columns top-paper">
-      <%= link_to 'New Discussion', new_discussion_path, class: "button" %>
+      <%= link_to 'New Discussion', new_category_discussion_path(category_id: @category.id), class: "button" %>
       <h3 class="logged-in-as">Logged in as: <%= current_user.nickname %></h3>
     </div>
   </div>
 <% end %>
 
+<%= render partial: '/discussions/discussion_and_comments' %>

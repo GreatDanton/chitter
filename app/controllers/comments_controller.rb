@@ -55,13 +55,12 @@ class CommentsController < ApplicationController
     respond_to do |format|
     if current_user.voted_down_on? @comment
     @comment.upvote_from current_user
-    @comment.user.increase_karma
-    @comment.user.increase_karma
+    @comment.user.increase_karma(2)
     format.html { redirect_to :back}
     format.js
     else
       @comment.upvote_from current_user
-      @comment.user.increase_karma
+      @comment.user.increase_karma(1)
       format.html {redirect_to :back}
       format.js
     end
@@ -73,13 +72,12 @@ class CommentsController < ApplicationController
     respond_to do |format|
     if current_user.voted_up_on? @comment
     @comment.downvote_from current_user
-    @comment.user.decrease_karma
-    @comment.user.decrease_karma
+    @comment.user.decrease_karma(2)
     format.html { redirect_to :back }
     format.js
     else
       @comment.downvote_from current_user
-      @comment.user.decrease_karma
+      @comment.user.decrease_karma(1)
       format.html { redirect_to :back }
       format.js
     end
@@ -90,12 +88,12 @@ class CommentsController < ApplicationController
 
     if current_user.voted_up_on? @comment 
     @comment.unvote_by current_user
-    @comment.user.decrease_karma
+    @comment.user.decrease_karma(1)
     redirect_to :back
 
     else
     @comment.unvote_by current_user
-    @comment.user.increase_karma
+    @comment.user.increase_karma(1)
     redirect_to :back
     end
   end

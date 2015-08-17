@@ -1,0 +1,10 @@
+
+<div class="discussion">
+  <h2 class="text-centered">New Discussion</h2>
+  <%= form_for @discussion do |f| %>
+    <%= f.label :category, "Select category:" %>
+    <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+    <%= f.submit "Save changes", class: "button", data: {disable_with: "Saving..."} %>
+  <% end %>
+
+</div>

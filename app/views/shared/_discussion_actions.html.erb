@@ -4,9 +4,11 @@
                  <% if logged_in? %>
                 <% if discussion.user == current_user %>
                   <%= link_to 'Destroy', discussion, method: :delete, data: { confirm: 'Warning: This will delete discussion and all comments below! Are you sure you want to delete this discussion?' } %>
+                  <%= link_to 'Edit', edit_discussion_path(discussion) %>
                 <% else %>
                 <% if current_user.admin? %>
                 <%= link_to 'Destroy', discussion, method: :delete, data: { confirm: 'Warning: This will delete discussion and all comments below! Are you sure you want to delete this discussion?'} %>
+                <%= link_to 'Edit', edit_discussion_path(discussion) %>
                 <% end %>
                 <% end %>
                 <% end %>

@@ -17,7 +17,7 @@
     </div>
     <!-- displaying form for commenting-->
       <% if logged_in? %>
-        <%= render partial: '/shared/comment_form', locals: { discussion: discussion } %>
+       <%= render partial: '/shared/comment_form', locals: { discussion: discussion } %>
     <% else %>
     <div class="row">
     <div class="small-12 columns text">
