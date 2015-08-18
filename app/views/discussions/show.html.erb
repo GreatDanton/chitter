@@ -1,5 +1,9 @@
 <% if logged_in? %>
-<h3> Logged in as: <%= current_user.nickname %> </h3>
+<div class="row">
+  <div class="small-12 columns top-paper">
+    <h3 class="logged-in-as">Logged in as: <%= current_user.nickname %></h3>
+  </div>
+</div>
 <% end %>
 
 <div id="discussion-<%= @discussion.id%>" class="discussion">

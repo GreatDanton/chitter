@@ -1,4 +1,10 @@
-
+<% if logged_in? %>
+<div class="row">
+  <div class="small-12 columns top-paper">
+    <h3 class="logged-in-as">Logged in as: <%= current_user.nickname %></h3>
+  </div>
+</div>
+<% end %>
 <div class="discussion">
   <h2 class="text-centered">New Discussion</h2>
   <%= form_for @discussion do |f| %>
