@@ -17,7 +17,9 @@
 <div class="row margin-top-50">
 <% @categories.each do |category| %>
   <div class="small-6 medium-4 columns categories">
-  <%= link_to category.name, category %>
+  <%= link_to(category) do %>
+    <%= category.name %> (<%= category.discussions.count %>)
+  <% end %>
   </div>
 <% end %>
 </div>
@@ -27,7 +29,9 @@
 <div class="row margin-top-50">
 <% @tech.each do |category| %>
   <div class="small-6 medium-4 columns categories">
-  <%= link_to category.name, category %>
+  <%= link_to(category) do %>
+  <%= category.name %> (<%= category.discussions.count %>)
+  <% end %>
   </div>
 <% end %>
 </div>
