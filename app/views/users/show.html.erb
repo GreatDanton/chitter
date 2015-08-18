@@ -13,10 +13,9 @@
 
 <% if @user.discussions.any? || @user.comments.any? %>
 <ol class="no-numbers">
-
+<%= will_paginate @comments %>
 	<%= render @comments %>
-
 </ol>
-<%= will_paginate @discussions %>
+<%= will_paginate @comments %>
 <%end%>
 </div>

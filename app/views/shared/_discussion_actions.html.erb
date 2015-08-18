@@ -16,14 +16,14 @@
            <div class="small-10 columns">
                <div class="userVoting right">
                 <p><%= pluralize(discussion.score, "user") %> recommend this discussion</p>
-              <% unless logged_in? %>
+              <!-- <% unless logged_in? %>
                 <%= link_to upvote_discussion_path(discussion), class:"button-user-vote", method: :put do %>
                   <i class="fa fa-thumbs-o-up fa-lg"></i></span>
                 <% end %>
                 <%= link_to downvote_discussion_path(discussion), class:"button-user-vote", method: :put do %>
                   <i class="fa fa-thumbs-o-down fa-lg"></i>
                 <% end %>
-              <% end %>
+              <% end %> -->
 
               <% if logged_in? %>
                   <% if current_user.voted_up_on? discussion %>
@@ -39,7 +39,7 @@
                     <% if current_user.voted_down_on? discussion %>
                       <%= link_to unvote_discussion_path(discussion), class:"button-user-vote-voted", method: :put do %>
                       <i class="fa fa-thumbs-o-down fa-lg"></i>
-                    <% end %>
+                      <% end %>
                     <% else %>
                       <%= link_to downvote_discussion_path(discussion), class:"button-user-vote", method: :put do %>
                         <i class="fa fa-thumbs-o-down fa-lg"></i>

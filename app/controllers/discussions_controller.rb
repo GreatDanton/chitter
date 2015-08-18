@@ -8,11 +8,11 @@ class DiscussionsController < ApplicationController
   # GET /discussions.json
 
   def frontpage
-    @users = User.all.order(karma: :desc)
+    @users = User.order(karma: :desc).limit(5)
   end
 
   def index
-    @discussions = Discussion.where("score >= 1").all.order(created_at: :desc)
+    @discussions = Discussion.where("score >= 1").order(created_at: :desc)
     @comment = Comment.new
   end
 
@@ -44,7 +44,7 @@ class DiscussionsController < ApplicationController
     end
 
       if @discussion.save
-        redirect_to discussions_path
+        redirect_to category_path(@discussion.category_id)
         flash[:success] = "Discussion was successfully created."
       else
         render 'new'
@@ -54,7 +54,7 @@ class DiscussionsController < ApplicationController
   def update
       if @discussion.update(discussion_params)
         redirect_to categories_path
-        flash[:success] = "Discussion was successfully updated."
+        flash[:success] = "Discussion was successfully moved."
       else
         render 'edit'
       end

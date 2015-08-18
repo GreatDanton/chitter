@@ -34,7 +34,7 @@
             <div class="row index-margin">
                 <div class="index-center-image-text">
                     <div class="medium-12 large-6 columns text" style="justify-content: center; display: inline-flex;">
-                  
+
                     <table style="max-width: 300px;">
                         <thead>
                         <tr>
@@ -130,7 +130,7 @@
   <tbody>
     <% @users.each_with_index do |user, i|%>
     <% @place = i+1 %>
-    <% if @place <= 5 %>
+    <% @place %>
       <tr>
         <td><%= @place %></td>
         <td>
@@ -155,40 +155,39 @@
         <% end %>
         </td>
         <% end %>
-        <% end %>
          </tr>
          </tbody>
          </table>
 
 
                 <h2 class="centered-text margin-top-150"> Active users: <%= User.count %></h2>
-               
+
             </div>
 
 
             <div class="margin-top-180">
-                <h3>If you like what you see above you are right fit for this platform. Sign up to join the maximum fun.</h2></br> 
-            
+                <h3>If you like what you see above you are right fit for this platform. Sign up to join the maximum fun.</h2></br>
+
             <h3>IF you are still not convinced if this is the right place for you, you can still enjoy in reading comments without Signing up.</h2>
-            
+
 
         </div>
-            
-            
-                        
-            
-            
+
+
+
+
+
         <div class="margin-top-50"></div>
         <div class="row">
-            
+
             <div class="medium-4 columns center-button"><%= link_to "Sign up", signup_path,class: "button btn-black" %></div>
             <div class="medium-4 columns center-button"><%= link_to "Log in", login_path,class: "button btn-black" %></div>
             <div class="medium-4 columns center-button"><%= link_to "I want to read without signing in", discussions_path, class: "button btn-black"%></a></div>
-        
+
         </div>
 
         </div> <!-- end of discussion -->
-        
-        
-        
+
+
+
     </div> <!-- end of container-->
