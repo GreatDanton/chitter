@@ -15,7 +15,7 @@
            </div>
            <div class="small-10 columns">
                <div class="userVoting right">
-                <p><%= pluralize(discussion.score, "user") %> recommend this discussion</p>
+                <div id="discussionScore-<%= discussion.id %>"><p><%= pluralize(discussion.score , "user") %> recommend this discussion</p></div>
               <!-- <% unless logged_in? %>
                 <%= link_to upvote_discussion_path(discussion), class:"button-user-vote", method: :put do %>
                   <i class="fa fa-thumbs-o-up fa-lg"></i></span>
@@ -27,21 +27,21 @@
 
               <% if logged_in? %>
                   <% if current_user.voted_up_on? discussion %>
-                    <%= link_to unvote_discussion_path(discussion), class:"button-user-vote-voted", method: :put do %>
-                      <i class="fa fa-thumbs-o-up fa-lg"></i></span>
+                    <%= link_to unvote_discussion_path(discussion),id: "unvote_up", class:"button-user-vote-voted", remote: true, data: { disable_with: "Unvoting..."}, method: :put do %>
+                      <i class="fa fa-thumbs-o-up fa-lg"></i>
                     <% end %>
                   <% else %>
-                    <%= link_to upvote_discussion_path(discussion), class:"button-user-vote", method: :put do %>
+                    <%= link_to upvote_discussion_path(discussion), id: "upvoteDiscussion", class:"button-user-vote", remote: true, data: {disable_with: "Voting..."}, method: :put do %>
                       <i class="fa fa-thumbs-o-up fa-lg"></i>
                     <% end %>
                   <%end%>
 
                     <% if current_user.voted_down_on? discussion %>
-                      <%= link_to unvote_discussion_path(discussion), class:"button-user-vote-voted", method: :put do %>
+                      <%= link_to unvote_discussion_path(discussion), id: "unvote_down",class:"button-user-vote-voted", remote: true, data: {disable_with: "Unvoting..."}, method: :put do %>
                       <i class="fa fa-thumbs-o-down fa-lg"></i>
                       <% end %>
                     <% else %>
-                      <%= link_to downvote_discussion_path(discussion), class:"button-user-vote", method: :put do %>
+                      <%= link_to downvote_discussion_path(discussion), id: "downvoteDiscussion", class:"button-user-vote", remote: true, data: {disable_with: "Voting..."}, method: :put do %>
                         <i class="fa fa-thumbs-o-down fa-lg"></i>
                       <% end %>
                   <% end %>

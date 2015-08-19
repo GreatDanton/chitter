@@ -3,5 +3,13 @@ $('#commentScore-<%= @comment.id %>').find('p').fadeIn(500, function(){
 });
 
 $('.userKarma-<%= @comment.user.id %>').find('p').fadeIn(500, function() {
-	$(this).replaceWith('<p><%=  @comment.user.karma %></p>');
+	$(this).replaceWith('<p><%= karma_title(@comment.user) %> <%=  @comment.user.karma %>pts</p>');
+});
+
+$('#comment-<%= @comment.id %>').find('#unvoteComment_up').fadeIn(500, function(){
+	$(this).replaceWith('<%= link_to upvote_comment_path(@comment), id: "upvoteComment", class: "button-user-vote", remote: true, data: {disable_with: "Voting..."}, method: :put do%><i class="fa fa-thumbs-o-up fa-lg"></i><% end %>');
+});
+
+$('#comment-<%= @comment.id %>').find('#unvoteComment_down').fadeIn(500, function(){
+	$(this).replaceWith('<%= link_to downvote_comment_path(@comment), id: "downvoteComment", class:"button-user-vote", remote: true, data: {disable_with: "Voting..."}, method: :put do %><i class="fa fa-thumbs-o-down fa-lg"></i><%end%>');
 });

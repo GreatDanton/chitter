@@ -12,16 +12,16 @@
 
                         <div class="row user-details">
                        <div class="small-6 columns text">
-                      
-                       <% if comment.user.admin? %> 
-                        <%= link_to comment.user.nickname, comment.user, class: "staff" %> 
+
+                       <% if comment.user.admin? %>
+                        <%= link_to comment.user.nickname, comment.user, class: "staff" %>
 
                         <%else%>
 
                         <%= link_to comment.user.nickname, comment.user %>
                         <%end%>
 
-                        
+
                        <div class="date-ago">
                              <% if comment.created_at == comment.updated_at %>
 
@@ -34,15 +34,15 @@
                         </div>
                             <div id="user-details" class="small-6 columns">
                               <% if comment.user.admin? %>
-                                   <div class="userKarma-<%= comment.user.id %> right staff"><p><%= karma_title(comment.user) %>  
-                               <%= comment.user.karma %>pts
-                                </p></div>                           
-                              <%else%>
-                                <div class="userKarma-<%= comment.user.id %> right"><p><%= karma_title(comment.user) %>  
+                                   <div class="userKarma-<%= comment.user.id %> right staff"><p><%= karma_title(comment.user) %>
                                <%= comment.user.karma %>pts
                                 </p></div>
-                              <% end %> 
-                            </div> 
+                              <%else%>
+                                <div class="userKarma-<%= comment.user.id %> right"><p><%= karma_title(comment.user) %>
+                               <%= comment.user.karma %>pts
+                                </p></div>
+                              <% end %>
+                            </div>
 
                             </div>
 
@@ -57,7 +57,7 @@
                 <div class="userVoting">
                   <div id="commentScore-<%= comment.id %>"><p><%= comment.score %></p></div>
                 <!-- VOTING AND UNVOTING SYSTEM-->
-                
+
                 <% unless logged_in? %>
                  <%= link_to upvote_comment_path(comment), class:"button-user-vote", method: :put do %>
                       <i class="fa fa-thumbs-o-up fa-lg"></i></span>
@@ -72,21 +72,21 @@
                     <% unless current_user == comment.user %>
 
                     <% if current_user.voted_up_on? comment %>
-                      <%= link_to unvote_comment_path(comment), class: "button-user-vote-voted", method: :put, data: { disable_with: "Saving..." } do %>
+                      <%= link_to unvote_comment_path(comment), id: "unvoteComment_up",class: "button-user-vote-voted", remote: true, method: :put, data: { disable_with: "Unvoting..." } do %>
                       <i class="fa fa-thumbs-o-up fa-lg"></i>
                       <% end %>
                     <% else %>
-                      <%= link_to upvote_comment_path(comment), class:"button-user-vote", id: "upvote",remote: true,method: :put, data: { disable_with: "Saving..." } do %>
+                      <%= link_to upvote_comment_path(comment), class:"button-user-vote", id: "upvoteComment", remote: true, method: :put, data: { disable_with: "Voting..." } do %>
                         <i class="fa fa-thumbs-o-up fa-lg"></i>
                       <% end %>
                     <% end %>
 
                     <% if current_user.voted_down_on? comment %>
-                     <%= link_to unvote_comment_path(comment), class: "button-user-vote-voted", method: :put, data: { disable_with: "Saving..." } do %>
+                     <%= link_to unvote_comment_path(comment), id: "unvoteComment_down", class: "button-user-vote-voted", remote: true, method: :put, data: { disable_with: "Unvoting..." } do %>
                       <i class="fa fa-thumbs-o-down fa-lg"></i>
                       <% end %>
                     <% else %>
-                        <%= link_to downvote_comment_path(comment), class:"button-user-vote", id: "downvote",remote: true, method: :put, data: { disable_with: "Saving..." } do %>
+                        <%= link_to downvote_comment_path(comment), class:"button-user-vote", id: "downvoteComment",remote: true, method: :put, data: { disable_with: "Voting..." } do %>
                           <i class="fa fa-thumbs-o-down fa-lg"></i>
                           <% end %>
                     <% end %>
@@ -115,9 +115,9 @@
       </div>
 
     	<%= link_to 'Destroy', comment, remote: true, method: :delete, data: { confirm: 'Are you sure?'} %>
-			
+
       <% else %>
-				
+
   <% if current_user.admin? %>
     	<%= link_to "Edit", edit_comment_path(comment), remote: true, data: { :'reveal-id' => "Edit-Modal-#{comment.id}", disable_with: "Opening..." } %>
 
@@ -135,7 +135,7 @@
 				  <% end %>
 				  <% end %>
 </div>
-                
+
             </div>
           </div>
                   </div>

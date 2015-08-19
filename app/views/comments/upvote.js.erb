@@ -8,6 +8,10 @@ $('.userKarma-<%= @comment.user.id %>').find('p').fadeIn(500, function() {
 	$(this).replaceWith('<p><%= karma_title(@comment.user) %> <%= @comment.user.karma %>pts</p>');
 });
 
-$('#comment-<%= @comment.id %>').find('#upvote').fadeIn(500, function() {
-	$(this).replaceWith(' <%= j render partial: "unvote_up", locals: { comment: @comment } %>');
+$('#comment-<%= @comment.id %>').find('#upvoteComment').fadeIn(500, function() {
+	$(this).replaceWith('<%= link_to unvote_comment_path(@comment), class:"button-user-vote voted", id: "unvoteComment_up", remote: true, data: {disable_with: "Unvoting..."},method: :put do %><i class="fa fa-thumbs-o-up fa-lg"></i><% end %>');
+});
+
+$('#comment-<%= @comment.id %>').find('#unvoteComment_down').fadeIn(500, function(){
+	$(this).replaceWith('<%= link_to downvote_comment_path(@comment), class:"button-user-vote", id: "downvoteComment", remote: true, data: {disable_with: "Voting..."}, method: :put do %><i class="fa fa-thumbs-o-down fa-lg"></i><% end %>');
 });

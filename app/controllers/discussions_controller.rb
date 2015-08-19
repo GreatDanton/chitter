@@ -1,7 +1,7 @@
 class DiscussionsController < ApplicationController
   layout 'pages', only: [:frontpage]
   before_action :set_discussion, only: [:show, :edit, :update, :destroy, :upvoteDiscussion, :downvoteDiscussion, :unvoteDiscussion]
-  before_action :logged_in_user, except: [:index, :show, :frontpage, :upvoteDiscussion, :downvoteDiscussion, :unvoteDiscussion]
+  before_action :logged_in_user, except: [:index, :show, :frontpage]
   before_action :correct_user, only: [:edit, :destroy]
 
   # GET /discussions
@@ -79,10 +79,12 @@ class DiscussionsController < ApplicationController
         @discussion.upvote_from current_user
         @discussion.increase_score(2)
         format.html { redirect_to :back}
+        format.js
       else
         @discussion.upvote_from current_user
         @discussion.increase_score(1)
         format.html { redirect_to :back }
+        format.js
       end
     end
   end
@@ -91,26 +93,32 @@ class DiscussionsController < ApplicationController
   def downvoteDiscussion
     respond_to do |format|
     if current_user.voted_up_on? @discussion
-    @discussion.downvote_from current_user
-    @discussion.decrease_score(2)
-    format.html { redirect_to :back }
+      @discussion.downvote_from current_user
+      @discussion.decrease_score(2)
+      format.html { redirect_to :back }
+      format.js
     else
       @discussion.downvote_from current_user
       @discussion.decrease_score(1)
       format.html { redirect_to :back }
+      format.js
     end
   end
   end
 
   def unvoteDiscussion
+    respond_to do |format|
     if current_user.voted_up_on? @discussion
-    @discussion.unvote_by current_user
-    @discussion.decrease_score(1)
-    redirect_to :back
+      @discussion.unvote_by current_user
+      @discussion.decrease_score(1)
+      format.html { redirect_to :back }
+      format.js
     else
-    @discussion.unvote_by current_user
-    @discussion.increase_score(1)
-    redirect_to :back
+      @discussion.unvote_by current_user
+      @discussion.increase_score(1)
+      format.html { redirect_to :back }
+      format.js
+    end
     end
   end
 

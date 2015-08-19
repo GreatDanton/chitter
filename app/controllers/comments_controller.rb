@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   before_action :admin, only: [:index]
 
  layout "pages", only: [:edit, :form]
- 
+
   # GET /comments
   def index
     @comments = Comment.all.order(created_at: :desc)
@@ -17,12 +17,12 @@ class CommentsController < ApplicationController
   # POST /comments
   def create
     @comment = current_user.comments.build(comment_params)
-    respond_to do |format| 
+    respond_to do |format|
       if @comment.save
         format.html { redirect_to discussions_path }
         format.js
       else
-        format.html 
+        format.html
         format.js
       end
     end
@@ -54,10 +54,10 @@ class CommentsController < ApplicationController
   def upvote
     respond_to do |format|
     if current_user.voted_down_on? @comment
-    @comment.upvote_from current_user
-    @comment.user.increase_karma(2)
-    format.html { redirect_to :back}
-    format.js
+      @comment.upvote_from current_user
+      @comment.user.increase_karma(2)
+      format.html { redirect_to :back}
+      format.js
     else
       @comment.upvote_from current_user
       @comment.user.increase_karma(1)
@@ -71,10 +71,10 @@ class CommentsController < ApplicationController
   def downvote
     respond_to do |format|
     if current_user.voted_up_on? @comment
-    @comment.downvote_from current_user
-    @comment.user.decrease_karma(2)
-    format.html { redirect_to :back }
-    format.js
+      @comment.downvote_from current_user
+      @comment.user.decrease_karma(2)
+      format.html { redirect_to :back }
+      format.js
     else
       @comment.downvote_from current_user
       @comment.user.decrease_karma(1)
@@ -83,19 +83,23 @@ class CommentsController < ApplicationController
     end
   end
   end
+
+
 # unvote from user
   def unvote
-
-    if current_user.voted_up_on? @comment 
-    @comment.unvote_by current_user
-    @comment.user.decrease_karma(1)
-    redirect_to :back
-
+    respond_to do |format|
+    if current_user.voted_up_on? @comment
+      @comment.unvote_by current_user
+      @comment.user.decrease_karma(1)
+      format.html { redirect_to :back }
+      format.js
     else
-    @comment.unvote_by current_user
-    @comment.user.increase_karma(1)
-    redirect_to :back
+      @comment.unvote_by current_user
+      @comment.user.increase_karma(1)
+      format.html { redirect_to :back }
+      format.js
     end
+  end
   end
 
   private
@@ -112,13 +116,13 @@ class CommentsController < ApplicationController
     def correct_user
       if current_user.admin?
         @comment = Comment.find(params[:id])
-      elsif 
+      elsif
         @comment = current_user.comments.find_by(id: params[:id])
         redirect_to discussions_path if @comment.nil?
       else
         redirect_to request.referer || discussions_path
         flash[:danger] = "You don't have access to this page!"
-      end     
+      end
     end
 
     def admin
