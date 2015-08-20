@@ -16,7 +16,7 @@
 !/log/.keep
 /tmp
 
-config/secrets.yml
+/config/secrets.yml
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
