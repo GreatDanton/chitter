@@ -16,4 +16,9 @@
 !/log/.keep
 /tmp
 
-/locales/secrets.yml
+/config/secrets.yml
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
