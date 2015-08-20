@@ -1,7 +1,7 @@
 class DiscussionsController < ApplicationController
   layout 'pages', only: [:frontpage]
   before_action :set_discussion, only: [:show, :edit, :update, :destroy, :upvoteDiscussion, :downvoteDiscussion, :unvoteDiscussion]
-  before_action :logged_in_user, except: [:index, :show, :frontpage]
+  before_action :logged_in_user, except: [:index, :show, :frontpage, :archive]
   before_action :correct_user, only: [:edit, :destroy]
 
   # GET /discussions
@@ -9,6 +9,10 @@ class DiscussionsController < ApplicationController
 
   def frontpage
     @users = User.order(karma: :desc).limit(5)
+  end
+
+  def archive
+    @discussions = Discussion.where("score >= 100").order(created_at: :desc)
   end
 
   def index
@@ -88,7 +92,7 @@ class DiscussionsController < ApplicationController
       end
     end
   end
-  
+
   #downvote from user
   def downvoteDiscussion
     respond_to do |format|

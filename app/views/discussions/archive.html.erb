@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<% if logged_in? %>
+	<div class="row">
+		<div class="small-12 columns top-paper">
+			<h3 class="logged-in-as">Logged in as: <%= current_user.nickname %></h3>
+		</div>
+	</div>
+<% end %>
+
+<%= render partial: 'discussion_and_comments' %>
+
+<% if @discussions.count == 0 %>
+  <div class="discussion">
+    <h3 class="centered-text"> No discussions in the archive. </h3>
+  </div>
+<% end %>

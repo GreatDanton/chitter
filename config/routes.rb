@@ -21,12 +21,14 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'archive' => 'discussions#archive'
+
   get 'faq' => 'categories#FAQ'
-  
+
   get 'leaderboards' => 'users#leaderboards'
 
   root 'discussions#frontpage'
-  
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
