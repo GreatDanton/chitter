@@ -88,7 +88,7 @@ class DiscussionsController < ApplicationController
       end
     end
   end
-
+  
   #downvote from user
   def downvoteDiscussion
     respond_to do |format|
